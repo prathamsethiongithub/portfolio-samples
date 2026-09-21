@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aarav Mehta Photography — Wedding Photography, Mumbai &amp; Worldwide</title>
+<meta name="description" content="Aarav Mehta is a Mumbai-based wedding photographer. Quiet, unhurried wedding photography across India and eighteen other countries. Packages from ₹1,45,000.">
+<meta name="theme-color" content="#FBF8F3">
+<meta property="og:title" content="Aarav Mehta Photography">
+<meta property="og:description" content="Quiet photographs of the loudest day of your life. Wedding photography, Mumbai &amp; worldwide.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&amp;family=Jost:wght@300;400;500&amp;display=swap" rel="stylesheet">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23FBF8F3'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='18' fill='%238A6438' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+
+<style>
+/* ============================================================
+   AARAV MEHTA PHOTOGRAPHY
+   Design tokens
+   ============================================================ */
+:root{
+  /* warm-neutral surfaces — never zero-chroma */
+  --paper:      #FFFDFA;
+  --ivory:      #FBF8F3;
+  --sand:       #F2EBE0;
+  --clay:       #E7DCCB;
+  --night:      #241E19;
+  --night-deep: #181310;
+
+  --ink:        #1A1714;
+  --ink-soft:   #4A423B;
+  --muted:      #6B6157;
+  --line:       rgba(26,23,20,.13);
+  --line-soft:  rgba(26,23,20,.07);
+
+  --brass:      #8A6438;   /* decorative accent (AA on ivory at body size) */
+  --brass-soft: #B08E5C;
+  --rose:       #A9705F;
+
+  --serif: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
+  --sans: "Jost", "Avenir Next", "Helvetica Neue", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  --gutter: clamp(20px, 5vw, 72px);
+  --sheet:  1320px;
+
+  --sp-3: .75rem; --sp-4: 1rem;  --sp-6: 1.5rem; --sp-8: 2rem;
+  --sp-12: 3rem;  --sp-16: 4rem; --sp-24: 6rem;  --sp-32: 8rem;
+
+  --shadow-sm: 0 1px 2px rgba(58,42,28,.05), 0 1px 3px rgba(58,42,28,.06);
+  --shadow-md: 0 8px 24px -12px rgba(58,42,28,.22), 0 2px 6px rgba(58,42,28,.05);
+  --shadow-lg: 0 30px 60px -30px rgba(58,42,28,.35), 0 6px 18px -8px rgba(58,42,28,.10);
+
+  --ease:      cubic-bezier(.25,1,.5,1);
+  --ease-expo: cubic-bezier(.16,1,.3,1);
+  --dur:       250ms;
+  --dur-slow:  600ms;
+
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23g)'/%3E%3C/svg%3E");
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+html:focus-within{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--ivory);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-weight:300;
+  font-size:clamp(15.5px,.55vw + 14px,17px);
+  line-height:1.72;
+  letter-spacing:.005em;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+body.is-locked{overflow:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+::selection{background:var(--brass);color:var(--paper)}
+
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px;border-radius:2px}
+
+.skip{
+  position:absolute;left:var(--gutter);top:-100px;z-index:200;
+  background:var(--ink);color:var(--ivory);padding:.75rem 1.25rem;
+  font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
+  transition:top 200ms var(--ease);
+}
+.skip:focus{top:1rem}
+
+/* ---------- type ---------- */
+h1,h2,h3,h4{font-family:var(--serif);font-weight:300;margin:0;letter-spacing:-.015em;color:var(--ink)}
+.display{font-size:clamp(2.7rem,7.4vw,6.1rem);line-height:.98;letter-spacing:-.028em}
+.h2{font-size:clamp(1.9rem,3.6vw,3.15rem);line-height:1.08}
+.h3{font-size:clamp(1.2rem,1.7vw,1.6rem);line-height:1.2;font-weight:400}
+.h4{font-size:1.02rem;line-height:1.3;font-weight:500;font-family:var(--sans);letter-spacing:0;text-transform:none}
+
+.eyebrow{
+  font-size:.66rem;letter-spacing:.32em;text-transform:uppercase;
+  font-weight:400;color:var(--brass);margin:0;
+}
+.eyebrow--light{color:var(--brass-soft)}
+.lede{font-size:clamp(1.02rem,.5vw + .95rem,1.22rem);color:var(--ink-soft);line-height:1.7}
+.muted{color:var(--muted)}
+.serif-i{font-family:var(--serif);font-style:italic;font-weight:300}
+.num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+.rule{height:1px;background:var(--line);border:0;margin:0}
+
+p{margin:0 0 1.15em}
+p:last-child{margin-bottom:0}
+
+/* ---------- layout ---------- */
+.sheet{width:100%;max-width:var(--sheet);margin-inline:auto;padding-inline:var(--gutter)}
+section{position:relative}
+.band{padding-block:clamp(72px,9vw,132px)}
+.band--tight{padding-block:clamp(56px,6vw,88px)}
+.band--sand{background:var(--sand)}
+.band--paper{background:var(--paper)}
+
+.grain{position:absolute;inset:0;background-image:var(--grain);background-size:180px;opacity:.16;mix-blend-mode:multiply;pointer-events:none;z-index:1}
+.band--night .grain, .hero .grain, .quote .grain, .lb .grain{opacity:.20;mix-blend-mode:overlay}
+
+.sec-head{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--sp-4);margin-bottom:clamp(40px,5vw,72px)}
+.sec-head__top{display:flex;align-items:baseline;gap:var(--sp-6);flex-wrap:wrap}
+.sec-head__num{font-family:var(--serif);font-size:.86rem;color:var(--brass);letter-spacing:.1em}
+.sec-head p{max-width:52ch}
+
+/* ---------- scroll progress ---------- */
+.progress{
+  position:fixed;top:0;left:0;height:2px;width:100%;transform:scaleX(0);
+  transform-origin:0 50%;background:linear-gradient(90deg,var(--brass-soft),var(--brass));
+  z-index:120;pointer-events:none;
+}
+
+/* ---------- nav ---------- */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  transition:background var(--dur) var(--ease),box-shadow var(--dur) var(--ease),border-color var(--dur) var(--ease);
+  border-bottom:1px solid transparent;
+}
+.nav__inner{
+  display:flex;align-items:center;justify-content:space-between;gap:var(--sp-6);
+  min-height:76px;
+}
+.nav.is-scrolled{
+  background:rgba(251,248,243,.86);
+  -webkit-backdrop-filter:saturate(1.4) blur(14px);
+  backdrop-filter:saturate(1.4) blur(14px);
+  border-bottom-color:var(--line-soft);
+}
+.mark{display:inline-flex;flex-direction:column;gap:2px;line-height:1}
+.mark__name{font-family:var(--serif);font-size:1.16rem;letter-spacing:.16em;text-transform:uppercase;font-weight:400}
+.mark__sub{font-size:.53rem;letter-spacing:.42em;text-transform:uppercase;color:var(--muted)}
+
+.nav__links{display:flex;align-items:center;gap:clamp(14px,2vw,30px)}
+.nav__link{
+  font-size:.71rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);
+  position:relative;padding-block:6px;transition:color var(--dur) var(--ease);
+}
+.nav__link::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--brass);
+  transform:scaleX(0);transform-origin:0 50%;transition:transform 320ms var(--ease-expo);
+}
+.nav__link:hover,.nav__link.is-active{color:var(--ink)}
+.nav__link:hover::after,.nav__link.is-active::after{transform:scaleX(1)}
+.nav__cta{
+  font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;
+  border:1px solid rgba(26,23,20,.26);padding:.62rem 1.15rem;border-radius:999px;
+  transition:background var(--dur) var(--ease),color var(--dur) var(--ease),transform var(--dur) var(--ease),border-color var(--dur) var(--ease);
+}
+.nav__cta:hover{background:var(--ink);color:var(--ivory);border-color:var(--ink);transform:translateY(-1px)}
+
+.burger{display:none;width:44px;height:44px;margin-right:-10px;position:relative;align-items:center;justify-content:center}
+.burger span{display:block;width:22px;height:1px;background:var(--ink);position:relative;transition:transform 300ms var(--ease-expo),background 200ms}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0;width:22px;height:1px;background:var(--ink);transition:transform 300ms var(--ease-expo),top 300ms var(--ease-expo)}
+.burger span::before{top:-7px}
+.burger span::after{top:7px}
+body.menu-open .burger span{background:transparent}
+body.menu-open .burger span::before{top:0;transform:rotate(45deg)}
+body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
+
+.drawer{
+  position:fixed;inset:0;z-index:99;background:var(--ivory);
+  padding:96px var(--gutter) 40px;display:flex;flex-direction:column;
+  opacity:0;visibility:hidden;transition:opacity 320ms var(--ease-expo),visibility 320ms;
+}
+body.menu-open .drawer{opacity:1;visibility:visible}
+.drawer a{
+  font-family:var(--serif);font-size:clamp(2rem,9vw,2.8rem);line-height:1.35;
+  padding-block:.35rem;border-bottom:1px solid var(--line-soft);
+  display:flex;justify-content:space-between;align-items:baseline;
+  opacity:0;transform:translateY(14px);
+  transition:opacity 460ms var(--ease-expo),transform 460ms var(--ease-expo);
+}
+body.menu-open .drawer a{opacity:1;transform:none}
+body.menu-open .drawer a:nth-child(1){transition-delay:60ms}
+body.menu-open .drawer a:nth-child(2){transition-delay:110ms}
+body.menu-open .drawer a:nth-child(3){transition-delay:160ms}
+body.menu-open .drawer a:nth-child(4){transition-delay:210ms}
+body.menu-open .drawer a:nth-child(5){transition-delay:260ms}
+.drawer a i{font-family:var(--sans);font-style:normal;font-size:.66rem;letter-spacing:.24em;color:var(--brass);text-transform:uppercase}
+.drawer__foot{margin-top:auto;padding-top:var(--sp-8);font-size:.8rem;color:var(--muted);display:grid;gap:.4rem}
+.drawer__foot span{overflow-wrap:anywhere}
+
+/* ---------- buttons & links ---------- */
+.btn{
+  --bg:var(--ink);--fg:var(--ivory);
+  display:inline-flex;align-items:center;gap:.7rem;
+  background:var(--bg);color:var(--fg);border:1px solid var(--bg);
+  padding:1rem 1.7rem;border-radius:999px;
+  font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;font-weight:400;
+  transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease),background var(--dur) var(--ease),color var(--dur) var(--ease),border-color var(--dur) var(--ease);
+}
+.btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.btn:active{transform:translateY(0) scale(.985);transition-duration:100ms}
+.btn--ghost{--bg:transparent;--fg:var(--ink);border-color:rgba(26,23,20,.26)}
+.btn--ghost:hover{border-color:var(--ink);background:rgba(26,23,20,.03);box-shadow:none}
+.btn--light{--bg:var(--ivory);--fg:var(--ink);border-color:var(--paper)}
+.btn--light:hover{box-shadow:0 14px 30px -18px rgba(255,255,255,.5)}
+.btn__arrow{transition:transform 320ms var(--ease-expo)}
+.btn:hover .btn__arrow{transform:translateX(4px)}
+
+.tlink{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--brass);
+  border-bottom:1px solid transparent;padding-bottom:3px;
+  transition:border-color var(--dur) var(--ease),gap var(--dur) var(--ease);
+}
+.tlink:hover{border-color:var(--brass);gap:.85rem}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;min-height:100vh;min-height:100svh;
+  display:grid;align-content:end;
+  background:
+    radial-gradient(120% 78% at 72% 8%, rgba(255,255,255,.85) 0%, rgba(255,255,255,0) 58%),
+    radial-gradient(90% 60% at 12% 96%, rgba(176,142,92,.28) 0%, rgba(176,142,92,0) 62%),
+    linear-gradient(168deg, #FBF8F3 0%, #F5EDE1 42%, #EBDCC6 78%, #DFC9AC 100%);
+  overflow:hidden;isolation:isolate;
+}
+.hero__rules{
+  position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.6;
+  background-image:repeating-linear-gradient(90deg, rgba(26,23,20,.055) 0 1px, transparent 1px 25%);
+  -webkit-mask-image:linear-gradient(180deg,transparent,#000 35%,transparent);
+  mask-image:linear-gradient(180deg,transparent,#000 35%,transparent);
+}
+.hero__vignette{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(120% 90% at 50% 40%, transparent 40%, rgba(58,42,28,.13) 100%)}
+.hero .grain{z-index:2}
+.hero__inner{position:relative;z-index:3;padding-block:clamp(140px,22vh,240px) clamp(48px,7vh,84px)}
+.hero__grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);gap:clamp(28px,5vw,72px);align-items:end}
+.hero__lead{max-width:20ch}
+.hero h1{margin:.5rem 0 0}
+.hero__sub{max-width:46ch;margin-top:clamp(20px,2.4vw,30px);color:var(--ink-soft)}
+.hero__cta{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:clamp(26px,3vw,38px)}
+.hero__aside{border-left:1px solid var(--line);padding-left:clamp(18px,2vw,28px);display:grid;gap:var(--sp-6)}
+.hero__fact{display:grid;gap:2px}
+.hero__fact b{font-family:var(--serif);font-size:1.45rem;font-weight:400;letter-spacing:0}
+.hero__fact span{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.hero__foot{
+  position:relative;z-index:3;display:flex;justify-content:space-between;align-items:center;gap:var(--sp-6);
+  border-top:1px solid var(--line-soft);padding-block:1.15rem;flex-wrap:wrap;
+}
+.hero__scroll{display:inline-flex;align-items:center;gap:.7rem;font-size:.62rem;letter-spacing:.26em;text-transform:uppercase;color:var(--muted)}
+.hero__scroll i{display:block;width:44px;height:1px;background:var(--brass);position:relative;overflow:hidden}
+.hero__scroll i::after{content:"";position:absolute;inset:0;background:var(--ink);transform-origin:0 50%;animation:sweep 2.6s var(--ease) infinite}
+@keyframes sweep{0%{transform:scaleX(0)}55%{transform:scaleX(1)}100%{transform:scaleX(1);opacity:0}}
+.hero__meta{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-soft)}
+/* small text sits on the darker end of the hero wash — keep AA contrast there */
+.hero .hero__meta,.hero .hero__scroll{color:#4A423B}
+.hero .hero__fact span{color:#5A5049}
+
+/* ---------- marquee ---------- */
+.marquee{border-block:1px solid var(--line-soft);background:var(--paper);overflow:hidden;padding-block:1.35rem}
+.marquee__track{display:flex;width:max-content;animation:slide 42s linear infinite}
+.marquee:hover .marquee__track{animation-play-state:paused}
+@keyframes slide{to{transform:translateX(-50%)}}
+.marquee__set{display:flex;align-items:center;gap:clamp(28px,4vw,64px);padding-right:clamp(28px,4vw,64px)}
+.marquee__set span{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.marquee__set span::after{content:"·";margin-left:clamp(28px,4vw,64px);color:var(--brass-soft)}
+
+/* ---------- photo placeholders ---------- */
+.ph{
+  display:block;position:relative;overflow:hidden;background-color:var(--clay);
+  background-image:
+    radial-gradient(110% 80% at 22% 12%, rgba(255,255,255,.42) 0%, rgba(255,255,255,0) 62%),
+    radial-gradient(85% 65% at 82% 104%, rgba(24,19,16,.30) 0%, rgba(24,19,16,0) 66%),
+    linear-gradient(var(--ang,163deg), var(--c1) 0%, var(--c2) 54%, var(--c3) 100%);
+}
+.ph::before{ /* film grain */
+  content:"";position:absolute;inset:0;background-image:var(--grain);background-size:180px;
+  opacity:.17;mix-blend-mode:overlay;pointer-events:none;
+}
+.ph::after{ /* lens vignette */
+  content:"";position:absolute;inset:0;pointer-events:none;
+  box-shadow:inset 0 0 60px -18px rgba(36,30,25,.35), inset 0 0 0 1px rgba(255,255,255,.14);
+  background:radial-gradient(115% 95% at 50% 45%, transparent 52%, rgba(36,30,25,.20) 100%);
+}
+
+/* ---------- work / bento gallery ---------- */
+.work__grid{
+  display:grid;grid-template-columns:repeat(12,1fr);
+  gap:clamp(10px,1.3vw,20px);
+}
+.tile{
+  position:relative;display:block;width:100%;padding:0;
+  border-radius:3px;overflow:hidden;background:none;
+  transition:transform 520ms var(--ease-expo),box-shadow 520ms var(--ease-expo);
+}
+.tile .ph{aspect-ratio:var(--ar,4/5);height:100%}
+.tile:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.tile__cap{
+  position:absolute;left:0;right:0;bottom:0;z-index:2;
+  padding:clamp(16px,2.4vw,28px);
+  display:grid;gap:3px;text-align:left;
+  background:linear-gradient(0deg, rgba(24,19,16,.72) 0%, rgba(24,19,16,.30) 52%, rgba(24,19,16,0) 100%);
+  transform:translateY(6px);opacity:.94;
+  transition:transform 520ms var(--ease-expo),opacity 520ms var(--ease-expo);
+}
+.tile:hover .tile__cap{transform:none;opacity:1}
+.tile__cap b{font-family:var(--serif);font-size:clamp(1.05rem,1.5vw,1.4rem);font-weight:400;color:#FFFDFA;letter-spacing:0}
+.tile__cap span{font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,253,250,.78)}
+.tile__zoom{
+  position:absolute;top:clamp(14px,1.8vw,20px);right:clamp(14px,1.8vw,20px);z-index:2;
+  width:38px;height:38px;border-radius:999px;display:grid;place-items:center;
+  background:rgba(255,253,250,.9);color:var(--ink);font-size:.9rem;
+  opacity:0;transform:translateY(-6px) scale(.9);
+  transition:opacity 420ms var(--ease-expo),transform 420ms var(--ease-expo);
+}
+.tile:hover .tile__zoom,.tile:focus-visible .tile__zoom{opacity:1;transform:none}
+
+.t1{grid-column:span 7}.t2{grid-column:span 5}
+.t3{grid-column:span 4}.t4{grid-column:span 4}.t5{grid-column:span 4}
+.t6{grid-column:span 5}.t7{grid-column:span 7}
+.work__foot{display:flex;justify-content:space-between;align-items:center;gap:var(--sp-6);margin-top:clamp(28px,3vw,44px);flex-wrap:wrap}
+
+/* ---------- about ---------- */
+.about__grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1fr);gap:clamp(32px,6vw,88px);align-items:start}
+.about__frame{position:relative}
+.about__frame .ph{aspect-ratio:4/5;border-radius:3px}
+.about__frame figcaption{margin-top:1rem;font-size:.63rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.about__stamp{
+  position:absolute;right:-1px;bottom:calc(1rem + 44px);z-index:3;
+  background:var(--paper);border:1px solid var(--line);border-radius:999px;
+  width:104px;height:104px;display:grid;place-items:center;text-align:center;
+  font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--brass);
+  box-shadow:var(--shadow-md);line-height:1.7;
+}
+.about__body>*+*{margin-top:var(--sp-6)}
+.facts{display:grid;gap:0;border-top:1px solid var(--line);margin-top:var(--sp-8)}
+.facts div{display:grid;grid-template-columns:11rem minmax(0,1fr);gap:var(--sp-4);padding:.95rem 0;border-bottom:1px solid var(--line-soft)}
+.facts dt,.facts span:first-child{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);padding-top:.28rem}
+.facts span:last-child{color:var(--ink-soft)}
+.signature{font-family:var(--serif);font-style:italic;font-size:1.65rem;color:var(--ink);line-height:1}
+
+/* ---------- quote (breathing, dark) ---------- */
+.quote{
+  position:relative;background:var(--night);color:var(--ivory);overflow:hidden;isolation:isolate;
+  background-image:
+    radial-gradient(80% 70% at 80% 0%, rgba(176,142,92,.22) 0%, rgba(176,142,92,0) 60%),
+    linear-gradient(180deg,#241E19 0%,#181310 100%);
+}
+.quote__inner{position:relative;z-index:2;padding-block:clamp(72px,10vw,140px);display:grid;gap:var(--sp-8);max-width:24ch;margin-inline:auto;text-align:center}
+.quote blockquote{
+  margin:0;font-family:var(--serif);font-weight:300;
+  font-size:clamp(1.55rem,3.4vw,2.9rem);line-height:1.24;letter-spacing:-.015em;color:#FFFDFA;
+}
+.quote blockquote em{font-style:italic;color:var(--brass-soft)}
+.quote figcaption{font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:rgba(251,248,243,.62)}
+.quote__inner{max-width:min(78ch,100%)}
+.quote__mark{font-family:var(--serif);font-size:3.4rem;color:var(--brass);line-height:.6;opacity:.9}
+
+/* ---------- packages ---------- */
+.pkg-list{border-top:1px solid var(--line)}
+.pkg{
+  position:relative;display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr) auto;
+  gap:clamp(20px,3vw,56px);align-items:start;
+  padding-block:clamp(26px,3.4vw,44px);border-bottom:1px solid var(--line);
+  transition:background 420ms var(--ease);
+}
+.pkg::before{content:"";position:absolute;left:calc(var(--gutter) * -1);right:calc(var(--gutter) * -1);top:0;bottom:0;background:transparent;transition:background 420ms var(--ease);z-index:-1}
+.pkg:hover::before{background:rgba(176,142,92,.055)}
+.pkg__name{display:grid;gap:.45rem}
+.pkg__name h3{display:flex;align-items:center;gap:.6rem;font-size:clamp(1.35rem,2.1vw,1.85rem);font-weight:400}
+.pkg__name p{font-size:.94rem;color:var(--muted);max-width:34ch;margin:0}
+.pkg__tag{font-family:var(--sans);font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--brass);border:1px solid var(--brass-soft);border-radius:999px;padding:.3rem .6rem;white-space:nowrap}
+.pkg__inc{margin:0;padding:0;list-style:none;display:grid;gap:.4rem;font-size:.92rem;color:var(--ink-soft)}
+.pkg__inc li{display:flex;gap:.7rem}
+.pkg__inc li::before{content:"";flex:0 0 auto;width:5px;height:5px;margin-top:.62em;border-radius:50%;background:var(--brass-soft)}
+.pkg__buy{display:grid;gap:.7rem;justify-items:end;text-align:right;min-width:11.5rem}
+.pkg__price{font-family:var(--serif);font-size:clamp(1.4rem,2vw,1.75rem);font-weight:400;letter-spacing:0;white-space:nowrap}
+.pkg__price small{display:block;font-family:var(--sans);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:.3rem;white-space:normal}
+
+.addons{margin-top:clamp(40px,4.6vw,64px);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 clamp(28px,5vw,72px)}
+.addons h3{grid-column:1/-1;margin-bottom:1rem;font-size:1.05rem;font-family:var(--sans);font-weight:500;letter-spacing:0}
+.addon{display:grid;grid-template-columns:auto 1fr auto;gap:.75rem;align-items:baseline;padding:.72rem 0;font-size:.9rem;color:var(--ink-soft)}
+.addon i{display:block;border-bottom:1px dotted var(--line);transform:translateY(-.25em);align-self:end;height:.6em}
+.addon b{font-weight:400;font-variant-numeric:tabular-nums;white-space:nowrap}
+.pkg-note{margin-top:clamp(28px,3vw,40px);font-size:.78rem;color:var(--muted);border-left:1px solid var(--brass-soft);padding-left:1.1rem;max-width:60ch}
+
+/* ---------- words ---------- */
+.words{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(20px,3vw,48px)}
+.word{background:var(--paper);border:1px solid var(--line-soft);border-radius:4px;padding:clamp(26px,3vw,40px);display:grid;gap:var(--sp-6);align-content:space-between;box-shadow:var(--shadow-sm)}
+.word blockquote{margin:0;font-family:var(--serif);font-size:clamp(1.15rem,1.7vw,1.45rem);line-height:1.4;color:var(--ink)}
+.word figcaption{display:flex;align-items:center;gap:.9rem;font-size:.63rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.word .dot{width:34px;height:34px;border-radius:50%;flex:0 0 auto}
+
+/* ---------- instagram ---------- */
+.ig{display:grid;gap:clamp(24px,3vw,40px)}
+.ig__head{display:flex;justify-content:space-between;align-items:end;gap:var(--sp-6);flex-wrap:wrap}
+.ig__grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(8px,1.1vw,16px)}
+.ig__item{position:relative;display:block;border-radius:3px;overflow:hidden}
+.ig__item .ph{aspect-ratio:1/1}
+.ig__item::after{
+  content:"View on Instagram ↗";position:absolute;inset:0;z-index:2;
+  display:grid;place-items:center;text-align:center;padding:1rem;
+  background:rgba(36,30,25,.62);color:#FFFDFA;
+  font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;
+  opacity:0;transition:opacity 420ms var(--ease-expo);
+}
+.ig__item:hover::after,.ig__item:focus-visible::after{opacity:1}
+
+/* ---------- contact ---------- */
+.band--night{background:var(--night);color:var(--ivory)}
+.band--night h2,.band--night .h2,.band--night h3{color:#FFFDFA}
+.band--night .lede{color:rgba(251,248,243,.74)}
+.band--night .muted{color:rgba(251,248,243,.58)}
+.band--night .rule,.band--night hr{background:rgba(251,248,243,.16)}
+.contact{position:relative;isolation:isolate}
+.contact__grid{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.78fr);gap:clamp(36px,6vw,88px);align-items:start}
+.form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,2vw,22px)}
+.field{display:grid;gap:.5rem;min-width:0}
+.field--full{grid-column:1/-1}
+.field label{font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(251,248,243,.62)}
+.field input,.field select,.field textarea{
+  width:100%;font:inherit;font-size:.95rem;font-weight:300;color:var(--ivory);
+  background:transparent;border:0;border-bottom:1px solid rgba(251,248,243,.24);
+  padding:.62rem 0;border-radius:0;
+  transition:border-color var(--dur) var(--ease),background var(--dur) var(--ease);
+}
+.field textarea{resize:vertical;min-height:104px;line-height:1.6}
+.field select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,rgba(251,248,243,.7) 50%),linear-gradient(135deg,rgba(251,248,243,.7) 50%,transparent 50%);background-position:calc(100% - 12px) 1.15rem,calc(100% - 7px) 1.15rem;background-size:5px 5px,5px 5px;background-repeat:no-repeat;padding-right:2rem}
+.field select option{color:#1A1714;background:#FFFDFA}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-bottom-color:var(--brass-soft);background:rgba(251,248,243,.04)}
+.field input::placeholder,.field textarea::placeholder{color:rgba(251,248,243,.46)}
+.field input,.field select,.field textarea{border-bottom-color:rgba(251,248,243,.2)}
+.field input:user-invalid,.field textarea:user-invalid{border-bottom-color:#D98A7A}
+.form__foot{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:var(--sp-6);flex-wrap:wrap;margin-top:.6rem}
+.form__note{font-size:.72rem;color:rgba(251,248,243,.5);max-width:32ch}
+.form__status{grid-column:1/-1;font-size:.86rem;color:var(--brass-soft);min-height:1.4em}
+.form__status.is-error{color:#E0A392}
+.form.is-sent .form__body{opacity:.32;pointer-events:none;transition:opacity 400ms var(--ease)}
+.sent{
+  grid-column:1/-1;border:1px solid rgba(251,248,243,.2);border-radius:4px;
+  padding:clamp(22px,2.6vw,32px);display:none;gap:.6rem;
+  background:rgba(251,248,243,.045);
+}
+.form.is-sent .sent{display:grid}
+.sent h3{font-family:var(--serif);font-size:1.5rem;font-weight:400}
+.contact__side{display:grid;gap:var(--sp-8);align-content:start}
+.cblock{display:grid;gap:.4rem}
+.cblock b{font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(251,248,243,.55);font-weight:400}
+.cblock p,.cblock a{font-size:1.02rem;color:rgba(251,248,243,.9);margin:0;overflow-wrap:anywhere}
+.cblock a{border-bottom:1px solid rgba(251,248,243,.24);transition:border-color var(--dur) var(--ease),color var(--dur) var(--ease)}
+.cblock a:hover{border-color:var(--brass-soft);color:#FFFDFA}
+.cblock--ig a{display:inline-flex;align-items:center;gap:.55rem}
+.avatar{display:flex;align-items:center;gap:1rem;padding-top:var(--sp-4);border-top:1px solid rgba(251,248,243,.16)}
+.avatar .dot{width:52px;height:52px;border-radius:50%;flex:0 0 auto}
+
+/* ---------- footer ---------- */
+.foot{background:var(--night-deep);color:rgba(251,248,243,.66);position:relative;isolation:isolate}
+.foot__inner{position:relative;z-index:2;padding-block:clamp(52px,6vw,80px) 28px}
+.foot__top{display:grid;grid-template-columns:minmax(0,1.3fr) repeat(2,minmax(0,.7fr));gap:clamp(28px,4vw,64px);padding-bottom:clamp(32px,4vw,52px);border-bottom:1px solid rgba(251,248,243,.14)}
+.foot h3{font-family:var(--sans);font-size:.6rem;letter-spacing:.26em;text-transform:uppercase;color:rgba(251,248,243,.5);font-weight:400;margin-bottom:1rem}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:.55rem;font-size:.9rem}
+.foot a{transition:color var(--dur) var(--ease)}
+.foot a:hover{color:#FFFDFA}
+.foot .mark__name{color:#FFFDFA}
+.foot .mark__sub{color:rgba(251,248,243,.44)}
+.foot__bottom{display:flex;justify-content:space-between;gap:var(--sp-6);flex-wrap:wrap;align-items:center;padding-top:24px;font-size:.72rem;letter-spacing:.04em}
+.top-link{display:inline-flex;align-items:center;gap:.5rem;font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(251,248,243,.7)}
+.top-link:hover{color:#FFFDFA}
+
+/* ---------- lightbox ---------- */
+.lb{
+  position:fixed;inset:0;z-index:150;display:grid;place-items:center;
+  padding:clamp(16px,4vw,52px);
+  background:rgba(20,16,13,.9);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  opacity:0;visibility:hidden;transition:opacity 340ms var(--ease-expo),visibility 340ms;
+}
+.lb.is-open{opacity:1;visibility:visible}
+.lb__panel{position:relative;z-index:2;width:100%;max-width:960px;display:grid;gap:1rem;transform:translateY(12px) scale(.985);transition:transform 460ms var(--ease-expo)}
+.lb.is-open .lb__panel{transform:none}
+.lb__frame .ph{aspect-ratio:16/10;border-radius:3px;max-height:70vh}
+.lb__cap{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap;color:var(--ivory)}
+.lb__cap b{font-family:var(--serif);font-size:1.2rem;font-weight:400}
+.lb__cap span{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(251,248,243,.6)}
+.lb__close{
+  position:absolute;top:clamp(14px,2.4vw,26px);right:clamp(14px,2.4vw,26px);z-index:3;
+  width:44px;height:44px;border-radius:999px;display:grid;place-items:center;
+  background:rgba(251,248,243,.1);border:1px solid rgba(251,248,243,.22);color:var(--ivory);font-size:1.1rem;
+  transition:background var(--dur) var(--ease),transform var(--dur) var(--ease);
+}
+.lb__close:hover{background:rgba(251,248,243,.2);transform:rotate(90deg)}
+.lb__hint{position:absolute;left:0;right:0;bottom:clamp(10px,2vw,20px);text-align:center;font-size:.58rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(251,248,243,.4);z-index:3}
+
+/* ---------- reveal ---------- */
+[data-animate]{opacity:0;transform:translateY(26px);transition:opacity var(--dur-slow) var(--ease-expo),transform var(--dur-slow) var(--ease-expo);transition-delay:var(--d,0ms)}
+[data-animate].is-in{opacity:1;transform:none}
+.no-js [data-animate]{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:1080px){
+  .nav__links{display:none}
+  .burger{display:flex}
+  .hero__grid{grid-template-columns:1fr}
+  .hero__aside{border-left:0;border-top:1px solid var(--line);padding-left:0;padding-top:1.4rem;grid-auto-flow:column;justify-content:start;gap:clamp(26px,7vw,56px)}
+  .about__grid{grid-template-columns:1fr}
+  .about__frame{max-width:460px}
+  .contact__grid{grid-template-columns:1fr}
+}
+@media (max-width:900px){
+  .pkg{grid-template-columns:minmax(0,1fr);gap:1.1rem}
+  .pkg__buy{justify-items:start;text-align:left;min-width:0;display:flex;align-items:baseline;gap:1.2rem;flex-wrap:wrap}
+  .pkg__buy .tlink{margin-top:0}
+  .ig__grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:760px){
+  .work__grid{grid-template-columns:repeat(6,1fr)}
+  .t1,.t2,.t6,.t7{grid-column:span 6}
+  .t3,.t4,.t5{grid-column:span 6}
+  .t3 .ph,.t4 .ph,.t5 .ph{--ar:4/5}
+  .words{grid-template-columns:1fr}
+  .addons{grid-template-columns:1fr}
+  .form{grid-template-columns:1fr}
+  .foot__top{grid-template-columns:1fr}
+  .about__stamp{position:static;margin-top:1rem;width:auto;height:auto;border-radius:999px;padding:.7rem 1.1rem;display:inline-grid;box-shadow:none}
+  .hero__inner{padding-top:clamp(120px,26vh,180px)}
+}
+@media (max-width:520px){
+  .ig__grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ig__item:nth-child(5){display:none}
+  .facts div{grid-template-columns:1fr;gap:.2rem}
+  .hero__cta .btn{width:100%;justify-content:space-between}
+}
+
+/* ---------- motion / print ---------- */
+@media (prefers-reduced-motion:reduce){
+  html:focus-within{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
+  [data-animate]{opacity:1 !important;transform:none !important}
+  .marquee__track{animation:none;transform:none}
+  .tile:hover,.btn:hover{transform:none}
+}
+@media print{
+  .nav,.drawer,.progress,.lb,.hero__scroll,.marquee{display:none !important}
+  body{background:#fff;color:#000}
+  .band--night,.quote,.foot{background:#fff !important;color:#000 !important}
+}
+</style>
+</head>
+
+<body class="no-js">
+<a class="skip" href="#work">Skip to selected work</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="sheet nav__inner">
+    <a class="mark" href="#top" aria-label="Aarav Mehta Photography — home">
+      <span class="mark__name">Aarav&nbsp;Mehta</span>
+      <span class="mark__sub">Photography · Est. 2013</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a class="nav__link" href="#work">Work</a>
+      <a class="nav__link" href="#about">About</a>
+      <a class="nav__link" href="#packages">Packages</a>
+      <a class="nav__link" href="#words">Words</a>
+      <a class="nav__link" href="#contact">Contact</a>
+      <a class="nav__link" href="https://www.instagram.com/aaravmehta.photography/" target="_blank" rel="noopener noreferrer">Instagram&nbsp;↗</a>
+      <a class="nav__cta" href="#contact">Check availability</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><span></span></button>
+  </div>
+</header>
+
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Menu">
+  <a href="#work" data-drawer>Selected work <i>01</i></a>
+  <a href="#about" data-drawer>About <i>02</i></a>
+  <a href="#packages" data-drawer>Packages <i>03</i></a>
+  <a href="#words" data-drawer>Kind words <i>04</i></a>
+  <a href="#contact" data-drawer>Enquire <i>05</i></a>
+  <div class="drawer__foot">
+    <span>Bandra West, Mumbai 400050</span>
+    <span><a href="mailto:hello@aaravmehta.photography">hello@aaravmehta.photography</a> · <a href="tel:+919820041732">+91 98200 41732</a></span>
+    <span><a href="https://www.instagram.com/aaravmehta.photography/" target="_blank" rel="noopener noreferrer">Instagram ↗ @aaravmehta.photography</a></span>
+  </div>
+</div>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero__rules" aria-hidden="true"></div>
+    <div class="hero__vignette" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+
+    <div class="sheet hero__inner">
+      <div class="hero__grid">
+        <div>
+          <p class="eyebrow">Wedding photography · Mumbai &amp; worldwide</p>
+          <h1 class="display hero__lead" id="hero-title">Quiet photographs of the loudest day of your life.</h1>
+          <p class="lede hero__sub">I shoot weddings the way they actually happen — unhurried, a little imperfect, entirely yours. No stiff line-ups, no invented moments, nothing you'd wince at in twenty years.</p>
+          <div class="hero__cta">
+            <a class="btn" href="#work">View selected work <span class="btn__arrow" aria-hidden="true">→</span></a>
+            <a class="btn btn--ghost" href="#contact">Check your date</a>
+          </div>
+        </div>
+        <aside class="hero__aside" aria-label="At a glance">
+          <div class="hero__fact"><b class="num">312</b><span>Weddings photographed</span></div>
+          <div class="hero__fact"><b class="num">19</b><span>Countries</span></div>
+          <div class="hero__fact"><b class="num">2</b><span>Shooters, always</span></div>
+        </aside>
+      </div>
+
+      <div class="hero__foot">
+        <span class="hero__scroll"><i aria-hidden="true"></i> Scroll for the work</span>
+        <span class="hero__meta">Now booking · Nov 2026 — Mar 2027</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROOF MARQUEE ============ -->
+  <div class="marquee" aria-label="Featured in">
+    <div class="marquee__track">
+      <div class="marquee__set">
+        <span>Vogue India</span><span>Condé Nast Traveller</span><span>Brides Today</span>
+        <span>Harper's Bazaar Bride</span><span>WeddingSutra</span><span>Elle Décor</span>
+        <span>The Voice of Fashion</span><span>Aisle &amp; Co.</span>
+      </div>
+      <div class="marquee__set" aria-hidden="true">
+        <span>Vogue India</span><span>Condé Nast Traveller</span><span>Brides Today</span>
+        <span>Harper's Bazaar Bride</span><span>WeddingSutra</span><span>Elle Décor</span>
+        <span>The Voice of Fashion</span><span>Aisle &amp; Co.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ WORK ============ -->
+  <section class="band band--paper" id="work" aria-labelledby="work-title">
+    <div class="sheet">
+      <div class="sec-head">
+        <div class="sec-head__top">
+          <span class="sec-head__num num">01</span>
+          <p class="eyebrow">Selected work</p>
+        </div>
+        <h2 class="h2" id="work-title" data-animate>Frames from the last three seasons</h2>
+        <p class="lede" data-animate style="--d:80ms">Seven weddings, seven very different rooms. Tap any frame to see it large — full captions carry the location and the year.</p>
+      </div>
+
+      <div class="work__grid" id="gallery">
+        <button class="tile t1" type="button"
+          data-title="Sunrise Mandap" data-meta="Udaipur · December 2025"
+          data-caption="A 5:50 a.m. mandap on the lake steps. The pandit arrived before the light did, and the whole family watched the water instead of the camera."
+          data-c1="#F3D9B8" data-c2="#E0A276" data-c3="#A85C39" data-ang="155deg">
+          <span class="ph" style="--ar:4/5;--c1:#F3D9B8;--c2:#E0A276;--c3:#A85C39;--ang:155deg" role="img" aria-label="Placeholder frame: sunrise mandap on the lake steps in Udaipur"></span>
+          <span class="tile__cap"><b>Sunrise Mandap</b><span>Udaipur · 2025</span></span>
+          <span class="tile__zoom" aria-hidden="true">⤢</span>
+        </button>
+
+        <button class="tile t2" type="button"
+          data-title="The Long Table" data-meta="Val d'Orcia · Tuscany · May 2024"
+          data-caption="Ninety guests under one canopy of cypress. I photographed the meal more than the ceremony — that's where everyone actually is."
+          data-c1="#EFE3CE" data-c2="#C9A87A" data-c3="#7E6140" data-ang="175deg">
+          <span class="ph" style="--ar:4/3;--c1:#EFE3CE;--c2:#C9A87A;--c3:#7E6140;--ang:175deg" role="img" aria-label="Placeholder frame: long outdoor wedding table in Tuscany"></span>
+          <span class="tile__cap"><b>The Long Table</b><span>Tuscany · 2024</span></span>
+          <span class="tile__zoom" aria-hidden="true">⤢</span>
+        </button>
+
+        <button class="tile t3" type="button"
+          data-title="Haldi, 6:40 a.m." data-meta="Pune · February 2026"
+          data-caption="Turmeric, ghee and an argument about the generator. Shot on Portra 400, mostly at f/2."
+          data-c1="#F7E3BC" data-c2="#E0B062" data-c3="#A9762F" data-ang="140deg">
+          <span class="ph" style="--ar:1/1;--c1:#F7E3BC;--c2:#E0B062;--c3:#A9762F;--ang:140deg" role="img" aria-label="Placeholder frame: haldi ceremony at dawn in Pune"></span>
+          <span class="tile__cap"><b>Haldi, 6:40 am</b><span>Pune · 2026</span></span>
+          <span class="tile__zoom" aria-hidden="true">⤢</span>
+        </button>
+
+        <button class="tile t4" type="button"
+          data-title="Baraat in Monsoon" data-meta="Fort Kochi · July 2024"
+          data-caption="It rained for four hours and nobody moved indoors. Best baraat I have ever photographed — everything was already soaked."
+          data-c1="#DCE3DE" data-c2="#9FB0A4" data-c3="#54655B" data-ang="160deg">
+          <span class="ph" style="--ar:1/1;--c1:#DCE3DE;--c2:#9FB0A4;--c3:#54655B;--ang:160deg" role="img" aria-label="Placeholder frame: rainy baraat procession in Fort Kochi"></span>
+          <span class="tile__cap"><b>Baraat in Monsoon</b><span>Kochi · 2024</span></span>
+          <span class="tile__zoom" aria-hidden="true">⤢</span>
+        </button>
+
+        <button class="tile t5" type="button"
+          data-title="First Look" data-meta="Alibaug · November 2025"
+          data-caption="Thirty seconds, two people, a borrowed terrace. We shot the rest of the day around this one frame."
+          data-c1="#F6E4DA" data-c2="#D9A692" data-c3="#9E6455" data-ang="185deg">
+          <span class="ph" style="--ar:1/1;--c1:#F6E4DA;--c2:#D9A692;--c3:#9E6455;--ang:185deg" role="img" aria-label="Placeholder frame: first look on a terrace in Alibaug"></span>
+          <span class="tile__cap"><b>First Look</b><span>Alibaug · 2025</span></span>
+          <span class="tile__zoom" aria-hidden="true">⤢</span>
+        </button>
+
+        <button class="tile t6" type="button"
+          data-title="Sangeet, Third Song" data-meta="Jaipur · January 2026"
+          data-caption="Nine hundred people, one chandelier, and a cousin who had rehearsed for a month. Available light only."
+          data-c1="#F0DCDB" data-c2="#C98E93" data-c3="#71434F" data-ang="150deg">
+          <span class="ph" style="--ar:4/5;--c1:#F0DCDB;--c2:#C98E93;--c3:#71434F;--ang:150deg" role="img" aria-label="Placeholder frame: sangeet performance in Jaipur"></span>
+          <span class="tile__cap"><b>Sangeet Night</b><span>Jaipur · 2026</span></span>
+          <span class="tile__zoom" aria-hidden="true">⤢</span>
+        </button>
+
+        <button class="tile t7" type="button"
+          data-title="Vows, Backwater" data-meta="Kumarakom · August 2025"
+          data-caption="A morning ceremony on a wooden jetty. Two witnesses, eight fishermen, no seating plan — my favourite kind of wedding."
+          data-c1="#E7EDE8" data-c2="#A8BFB2" data-c3="#63806F" data-ang="168deg">
+          <span class="ph" style="--ar:16/11;--c1:#E7EDE8;--c2:#A8BFB2;--c3:#63806F;--ang:168deg" role="img" aria-label="Placeholder frame: wedding vows on a jetty in Kumarakom"></span>
+          <span class="tile__cap"><b>Vows, Backwater</b><span>Kumarakom · 2025</span></span>
+          <span class="tile__zoom" aria-hidden="true">⤢</span>
+        </button>
+      </div>
+
+      <div class="work__foot" data-animate>
+        <p class="muted" style="margin:0;font-size:.86rem">Full archive of 340 weddings available on request during our first call.</p>
+        <a class="tlink" href="#contact">Request the full archive <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="band band--sand" id="about" aria-labelledby="about-title">
+    <div class="grain" aria-hidden="true"></div>
+    <div class="sheet" style="position:relative;z-index:2">
+      <div class="sec-head">
+        <div class="sec-head__top">
+          <span class="sec-head__num num">02</span>
+          <p class="eyebrow">About</p>
+        </div>
+      </div>
+
+      <div class="about__grid">
+        <figure class="about__frame" data-animate style="margin:0">
+          <span class="ph" style="--ar:4/5;--c1:#F4E7D6;--c2:#CDA980;--c3:#7D5E3D;--ang:158deg" role="img" aria-label="Placeholder portrait of the photographer"></span>
+          <figcaption>Aarav Mehta, photographed by a client · Alibaug, 2024</figcaption>
+          <span class="about__stamp" aria-hidden="true">Kodak · Portra<br>since 2013</span>
+        </figure>
+
+        <div class="about__body">
+          <div class="sec-head__top">
+            <h2 class="h2" id="about-title" data-animate>I photograph the in-between parts.</h2>
+          </div>
+          <p class="lede" data-animate style="--d:60ms">I started in 2013 as a second shooter for a studio in Bandra, carrying bags and learning how to stand very still. Thirteen years later I still work quietly — the best frame of the day is usually taken somewhere between the four that were planned.</p>
+          <p data-animate style="--d:100ms;color:var(--ink-soft)">Most of my couples tell me they hate being photographed. So the work is built around not asking much of you: a walk at golden hour, a shared cup of chai, twenty minutes alone on the mehndi floor. My assistant and I shoot two cameras, film and digital, and we never take over your day — not for the light, not for the shot list, not for anyone's feed.</p>
+          <p data-animate style="--d:130ms;color:var(--ink-soft)">Everything you receive is edited by me, in my own studio. Nothing is outsourced, and nothing is delivered twice-looking-the-same. A wedding takes about six weeks to finish; an album takes twelve.</p>
+
+          <div class="facts" data-animate style="--d:160ms">
+            <div><span>Studio</span><span>402 Veronica House, Waroda Road, Bandra West, Mumbai 400050</span></div>
+            <div><span>Shooting since</span><span>2013 · 312 weddings across 19 countries</span></div>
+            <div><span>Team</span><span>Two photographers and one assistant on every wedding</span></div>
+            <div><span>Cameras</span><span>Leica M11 · Canon R5 · Hasselblad 500CM · Kodak Portra 400</span></div>
+            <div><span>Languages</span><span>English, Hindi, Marathi, Gujarati, some Malayalam</span></div>
+          </div>
+
+          <p class="signature" data-animate style="--d:200ms">Aarav</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ QUOTE (breathing, dark) ============ -->
+  <section class="quote" aria-label="Client quote">
+    <div class="grain" aria-hidden="true"></div>
+    <div class="sheet">
+      <figure class="quote__inner" data-animate>
+        <span class="quote__mark" aria-hidden="true">“</span>
+        <blockquote>He was in the room for fourteen hours and we forgot he was there. Then the album arrived and we <em>cried for a week</em>.</blockquote>
+        <figcaption>Meera &amp; Rohan · Goa, December 2024</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ PACKAGES ============ -->
+  <section class="band" id="packages" aria-labelledby="packages-title">
+    <div class="sheet">
+      <div class="sec-head">
+        <div class="sec-head__top">
+          <span class="sec-head__num num">03</span>
+          <p class="eyebrow">Packages</p>
+        </div>
+        <h2 class="h2" id="packages-title" data-animate>Four ways to work together</h2>
+        <p class="lede" data-animate style="--d:70ms">Every package includes me on the day, a private online gallery, and full-colour editing by hand. Prices below are for weddings within Maharashtra; travel is quoted separately at cost.</p>
+      </div>
+
+      <div class="pkg-list">
+        <article class="pkg" data-animate>
+          <div class="pkg__name">
+            <h3>The Intimate</h3>
+            <p>For registry weddings, home ceremonies and elopements of up to forty guests.</p>
+          </div>
+          <ul class="pkg__inc">
+            <li>6 hours of coverage, single day</li>
+            <li>One photographer (me)</li>
+            <li>250+ hand-edited images</li>
+            <li>Private online gallery for 12 months</li>
+          </ul>
+          <div class="pkg__buy">
+            <span class="pkg__price">₹1,45,000 <small>incl. consultation</small></span>
+            <a class="tlink" href="#contact">Enquire <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <article class="pkg" data-animate style="--d:60ms">
+          <div class="pkg__name">
+            <h3>The Signature <span class="pkg__tag">Most chosen</span></h3>
+            <p>A full wedding day, start to last dance, with a second shooter and this album.</p>
+          </div>
+          <ul class="pkg__inc">
+            <li>14 hours of coverage, single day</li>
+            <li>Two photographers, film + digital</li>
+            <li>600+ hand-edited images</li>
+            <li>12×12 inch album, 30 spreads</li>
+            <li>Complimentary engagement session in Mumbai</li>
+          </ul>
+          <div class="pkg__buy">
+            <span class="pkg__price">₹2,65,000 <small>album included</small></span>
+            <a class="tlink" href="#contact">Enquire <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <article class="pkg" data-animate style="--d:120ms">
+          <div class="pkg__name">
+            <h3>The Heritage</h3>
+            <p>Three days of functions — mehndi, haldi, sangeet and the wedding itself.</p>
+          </div>
+          <ul class="pkg__inc">
+            <li>Up to 3 consecutive days</li>
+            <li>Two photographers + assistant</li>
+            <li>1,200+ hand-edited images</li>
+            <li>Two albums, 30 spreads each</li>
+            <li>2-minute teaser film, edited by me</li>
+          </ul>
+          <div class="pkg__buy">
+            <span class="pkg__price">₹4,85,000 <small>three days</small></span>
+            <a class="tlink" href="#contact">Enquire <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <article class="pkg" data-animate style="--d:180ms">
+          <div class="pkg__name">
+            <h3>Destination</h3>
+            <p>Anywhere outside India, minimum four days. Two shooters plus an assistant travel with you.</p>
+          </div>
+          <ul class="pkg__inc">
+            <li>4–6 days on location</li>
+            <li>Scouting call and a written shot narrative</li>
+            <li>1,500+ hand-edited images</li>
+            <li>Two albums and a short film</li>
+            <li>Travel and stay billed at cost</li>
+          </ul>
+          <div class="pkg__buy">
+            <span class="pkg__price">From ₹6,50,000 <small>custom scope</small></span>
+            <a class="tlink" href="#contact">Enquire <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+      </div>
+
+      <div class="addons" data-animate>
+        <h3>Add to any package</h3>
+        <div>
+          <div class="addon"><span>Additional full day</span><i></i><b>₹95,000</b></div>
+          <div class="addon"><span>Second shooter, per day</span><i></i><b>₹28,000</b></div>
+        </div>
+        <div>
+          <div class="addon"><span>Extra 40-spread album</span><i></i><b>₹42,000</b></div>
+          <div class="addon"><span>Same-day edit film (3 min)</span><i></i><b>₹1,10,000</b></div>
+        </div>
+      </div>
+
+      <p class="pkg-note" data-animate>All prices are in Indian Rupees and exclusive of 18% GST and travel outside Maharashtra. A 30% retainer confirms your date; the balance is due seven days before the wedding. Dates are held for ten days while we talk.</p>
+    </div>
+  </section>
+
+  <!-- ============ WORDS ============ -->
+  <section class="band band--sand" id="words" aria-labelledby="words-title">
+    <div class="grain" aria-hidden="true"></div>
+    <div class="sheet" style="position:relative;z-index:2">
+      <div class="sec-head">
+        <div class="sec-head__top">
+          <span class="sec-head__num num">04</span>
+          <p class="eyebrow">Kind words</p>
+        </div>
+        <h2 class="h2" id="words-title" data-animate>What couples say afterwards</h2>
+      </div>
+
+      <div class="words">
+        <figure class="word" data-animate>
+          <blockquote>“We had a 900-person wedding and Aarav's pictures make it look like a small, private afternoon. My mother has carried the album to every relative's house in Pune.”</blockquote>
+          <figcaption>
+            <span class="dot ph" style="--c1:#EAD6BC;--c2:#C39B6C;--c3:#8A6438;--ang:150deg" role="img" aria-label="Placeholder avatar"></span>
+            Aditi &amp; Kabir · Pune, February 2026
+          </figcaption>
+        </figure>
+
+        <figure class="word" data-animate style="--d:80ms">
+          <blockquote>“He remembered the names of my entire family by the sangeet. That's not photography, that's care. The pictures are just proof of it.”</blockquote>
+          <figcaption>
+            <span class="dot ph" style="--c1:#E6DDE0;--c2:#B3939C;--c3:#6E4B57;--ang:165deg" role="img" aria-label="Placeholder avatar"></span>
+            Shreya &amp; Nikhil · Jaipur, January 2026
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="band band--night contact" id="contact" aria-labelledby="contact-title">
+    <div class="grain" aria-hidden="true"></div>
+    <div class="sheet contact__grid">
+      <div>
+        <div class="sec-head" style="margin-bottom:clamp(28px,3.4vw,44px)">
+          <div class="sec-head__top">
+            <span class="sec-head__num num" style="color:var(--brass-soft)">05</span>
+            <p class="eyebrow eyebrow--light">Enquire</p>
+          </div>
+          <h2 class="h2" id="contact-title" data-animate>Tell me about the day.</h2>
+          <p class="lede" data-animate style="--d:60ms">Dates for November 2026 to March 2027 are open now. I answer every enquiry myself — usually within two working days, never with an automated quote.</p>
+        </div>
+
+        <form class="form" id="enquiry" novalidate>
+          <div class="form__body" style="grid-column:1/-1;display:grid;grid-template-columns:inherit;gap:inherit">
+            <div class="field">
+              <label for="f-name">Your name</label>
+              <input id="f-name" name="name" type="text" autocomplete="name" placeholder="Aditi Sharma" required>
+            </div>
+            <div class="field">
+              <label for="f-email">Email</label>
+              <input id="f-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+            </div>
+            <div class="field">
+              <label for="f-phone">Phone (optional)</label>
+              <input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="+91 98XXX XXXXX">
+            </div>
+            <div class="field">
+              <label for="f-date">Wedding date</label>
+              <input id="f-date" name="date" type="date">
+            </div>
+            <div class="field">
+              <label for="f-city">City or venue</label>
+              <input id="f-city" name="city" type="text" placeholder="Udaipur">
+            </div>
+            <div class="field">
+              <label for="f-pkg">Package you have in mind</label>
+              <select id="f-pkg" name="package">
+                <option value="">Not sure yet</option>
+                <option>The Intimate</option>
+                <option>The Signature</option>
+                <option>The Heritage</option>
+                <option>Destination</option>
+              </select>
+            </div>
+            <div class="field field--full">
+              <label for="f-msg">Anything I should know</label>
+              <textarea id="f-msg" name="message" placeholder="Guest count, number of functions, whether your family is camera-shy…"></textarea>
+            </div>
+          </div>
+
+          <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
+
+          <div class="form__foot">
+            <p class="form__note">No newsletters, no follow-up sequences. One reply from me, then a call if you'd like one.</p>
+            <button class="btn btn--light" type="submit">Send enquiry <span class="btn__arrow" aria-hidden="true">→</span></button>
+          </div>
+
+          <div class="sent" id="sent" role="status">
+            <h3>Thank you — your note is with me.</h3>
+            <p class="muted">I read every enquiry personally and reply within two working days. If your date is within six weeks, call the studio on <a href="tel:+919820041732" style="border-bottom:1px solid rgba(251,248,243,.3)">+91 98200 41732</a> and we'll settle it in five minutes.</p>
+          </div>
+        </form>
+      </div>
+
+      <aside class="contact__side">
+        <div class="cblock" data-animate>
+          <b>Studio</b>
+          <p>402 Veronica House, Waroda Road<br>Bandra West, Mumbai 400050<br>By appointment, Tuesday to Saturday</p>
+        </div>
+        <div class="cblock" data-animate style="--d:60ms">
+          <b>Direct</b>
+          <p><a href="mailto:hello@aaravmehta.photography">hello@aaravmehta.photography</a></p>
+          <p><a href="tel:+919820041732">+91 98200 41732</a></p>
+        </div>
+        <div class="cblock cblock--ig" data-animate style="--d:100ms">
+          <b>Instagram</b>
+          <p><a href="https://www.instagram.com/aaravmehta.photography/" target="_blank" rel="noopener noreferrer">@aaravmehta.photography <span aria-hidden="true">↗</span></a></p>
+          <p class="muted" style="font-size:.82rem">Daily work-in-progress from the last three seasons.</p>
+        </div>
+        <div class="avatar" data-animate style="--d:140ms">
+          <span class="dot ph" style="--c1:#EAD6BC;--c2:#C39B6C;--c3:#8A6438;--ang:150deg" role="img" aria-label="Placeholder avatar of Aarav Mehta"></span>
+          <span class="muted" style="font-size:.82rem">You'll always get me, not an inbox manager.</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============ INSTAGRAM STUBS ============ -->
+  <section class="band band--tight band--paper" id="instagram" aria-labelledby="ig-title">
+    <div class="sheet ig">
+      <div class="ig__head" data-animate>
+        <div>
+          <p class="eyebrow">Latest from the feed</p>
+          <h2 class="h2" id="ig-title" style="margin-top:.6rem">@aaravmehta.photography</h2>
+        </div>
+        <a class="tlink" href="https://www.instagram.com/aaravmehta.photography/" target="_blank" rel="noopener noreferrer">Follow on Instagram <span aria-hidden="true">↗</span></a>
+      </div>
+
+      <div class="ig__grid" data-animate style="--d:60ms">
+        <a class="ig__item" href="https://www.instagram.com/aaravmehta.photography/" target="_blank" rel="noopener noreferrer" aria-label="Open @aaravmehta.photography on Instagram">
+          <span class="ph" style="--c1:#F4E3C8;--c2:#D9AE77;--c3:#94672E;--ang:150deg" role="img" aria-label="Placeholder Instagram post: marigold garlands"></span>
+        </a>
+        <a class="ig__item" href="https://www.instagram.com/aaravmehta.photography/" target="_blank" rel="noopener noreferrer" aria-label="Open @aaravmehta.photography on Instagram">
+          <span class="ph" style="--c1:#EFE0D2;--c2:#C9A085;--c3:#7E5A45;--ang:170deg" role="img" aria-label="Placeholder Instagram post: hands and mehndi"></span>
+        </a>
+        <a class="ig__item" href="https://www.instagram.com/aaravmehta.photography/" target="_blank" rel="noopener noreferrer" aria-label="Open @aaravmehta.photography on Instagram">
+          <span class="ph" style="--c1:#E7EAE3;--c2:#A9B49C;--c3:#5F6D57;--ang:155deg" role="img" aria-label="Placeholder Instagram post: garden ceremony"></span>
+        </a>
+        <a class="ig__item" href="https://www.instagram.com/aaravmehta.photography/" target="_blank" rel="noopener noreferrer" aria-label="Open @aaravmehta.photography on Instagram">
+          <span class="ph" style="--c1:#F1DEDA;--c2:#C69A94;--c3:#7C4F52;--ang:180deg" role="img" aria-label="Placeholder Instagram post: evening portraits"></span>
+        </a>
+        <a class="ig__item" href="https://www.instagram.com/aaravmehta.photography/" target="_blank" rel="noopener noreferrer" aria-label="Open @aaravmehta.photography on Instagram">
+          <span class="ph" style="--c1:#E9E4DA;--c2:#B0A48F;--c3:#6B6157;--ang:145deg" role="img" aria-label="Placeholder Instagram post: studio still life"></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="grain" aria-hidden="true"></div>
+  <div class="sheet foot__inner">
+    <div class="foot__top">
+      <div>
+        <a class="mark" href="#top">
+          <span class="mark__name">Aarav Mehta</span>
+          <span class="mark__sub">Photography · Mumbai</span>
+        </a>
+        <p class="muted" style="max-width:34ch;margin-top:1.2rem;font-size:.88rem">Wedding, engagement and family photography in Mumbai and anywhere the light is good. Booking 2026–27.</p>
+      </div>
+      <div>
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="#work">Selected work</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#packages">Packages &amp; pricing</a></li>
+          <li><a href="#words">Kind words</a></li>
+          <li><a href="#contact">Enquire</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Elsewhere</h3>
+        <ul>
+          <li><a href="https://www.instagram.com/aaravmehta.photography/" target="_blank" rel="noopener noreferrer">Instagram ↗</a></li>
+          <li><a href="https://www.instagram.com/aaravmehta.film/" target="_blank" rel="noopener noreferrer">Film diary ↗</a></li>
+          <li><a href="https://www.pinterest.com/" target="_blank" rel="noopener noreferrer">Pinterest ↗</a></li>
+          <li><a href="mailto:hello@aaravmehta.photography">hello@aaravmehta.photography</a></li>
+          <li><a href="tel:+919820041732">+91 98200 41732</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot__bottom">
+      <span>© <span id="year">2026</span> Aarav Mehta Photography. All rights reserved. Sample site — not a real studio.</span>
+      <a class="top-link" href="#top">Back to top <span aria-hidden="true">↑</span></a>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ LIGHTBOX ============ -->
+<div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lbTitle" hidden>
+  <div class="grain" aria-hidden="true"></div>
+  <button class="lb__close" id="lbClose" type="button" aria-label="Close">✕</button>
+  <div class="lb__panel" role="document">
+    <div class="lb__frame"><span class="ph" id="lbPh" role="img" aria-label="Enlarged placeholder frame"></span></div>
+    <div class="lb__cap">
+      <b id="lbTitle">Frame</b>
+      <span id="lbMeta"></span>
+    </div>
+    <p class="muted" id="lbCaption" style="font-size:.92rem;max-width:70ch;margin:0"></p>
+  </div>
+  <p class="lb__hint">Esc or click outside to close</p>
+</div>
+
+<script>
+/* Plain script — no modules, so it runs straight off file:// */
+(function () {
+  'use strict';
+  var root = document.documentElement;
+  document.body.classList.remove('no-js');
+
+  /* ---------- current year ---------- */
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  /* ---------- nav state + scroll progress ---------- */
+  var nav = document.getElementById('nav');
+  var bar = document.getElementById('progress');
+  var ticking = false;
+  function onScroll() {
+    var sy = window.pageYOffset || root.scrollTop;
+    if (nav) nav.classList.toggle('is-scrolled', sy > 24);
+    if (bar) {
+      var h = document.documentElement.scrollHeight - window.innerHeight;
+      var p = h > 0 ? Math.min(1, Math.max(0, sy / h)) : 0;
+      bar.style.transform = 'scaleX(' + p + ')';
+    }
+    ticking = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { ticking = true; window.requestAnimationFrame(onScroll); }
+  }, { passive: true });
+  onScroll();
+
+  /* ---------- mobile drawer ---------- */
+  var burger = document.getElementById('burger');
+  var drawer = document.getElementById('drawer');
+  var lastFocus = null;
+  function setMenu(open) {
+    document.body.classList.toggle('menu-open', open);
+    document.body.classList.toggle('is-locked', open);
+    if (burger) {
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    }
+    if (drawer) {
+      drawer.setAttribute('aria-hidden', open ? 'false' : 'true');
+      /* inline visibility so the overlay is never left un-visible if the
+         fade transition is starved of frames; CSS still drives the fade */
+      drawer.style.visibility = open ? 'visible' : '';
+    }
+    if (open) {
+      lastFocus = document.activeElement;
+      var first = drawer && drawer.querySelector('a');
+      if (first) first.focus();
+    } else if (lastFocus && lastFocus.focus) {
+      lastFocus.focus();
+    }
+  }
+  if (burger) {
+    burger.addEventListener('click', function () {
+      setMenu(!document.body.classList.contains('menu-open'));
+    });
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('[data-drawer]'), function (a) {
+    a.addEventListener('click', function () { setMenu(false); });
+  });
+
+  /* ---------- scroll reveal ---------- */
+  var items = Array.prototype.slice.call(document.querySelectorAll('[data-animate]'));
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !('IntersectionObserver' in window)) {
+    items.forEach(function (el) { el.classList.add('is-in'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -60px 0px', threshold: 0.08 });
+    items.forEach(function (el) { io.observe(el); });
+  }
+
+  /* ---------- active nav link ---------- */
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav__link[href^="#"]'));
+  var sections = links.map(function (l) { return document.querySelector(l.getAttribute('href')); }).filter(Boolean);
+  if ('IntersectionObserver' in window && sections.length) {
+    var navIo = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        links.forEach(function (l) {
+          l.classList.toggle('is-active', l.getAttribute('href') === '#' + e.target.id);
+        });
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    sections.forEach(function (s) { navIo.observe(s); });
+  }
+
+  /* ---------- lightbox ---------- */
+  var lb = document.getElementById('lightbox');
+  var lbPh = document.getElementById('lbPh');
+  var lbTitle = document.getElementById('lbTitle');
+  var lbMeta = document.getElementById('lbMeta');
+  var lbCap = document.getElementById('lbCaption');
+  var lbClose = document.getElementById('lbClose');
+  var lbOpener = null;
+
+  function openLightbox(btn) {
+    if (!lb) return;
+    lbOpener = btn;
+    lbTitle.textContent = btn.getAttribute('data-title') || 'Frame';
+    lbMeta.textContent = btn.getAttribute('data-meta') || '';
+    lbCap.textContent = btn.getAttribute('data-caption') || '';
+    lbPh.style.backgroundImage =
+      'radial-gradient(110% 80% at 22% 12%, rgba(255,255,255,.42) 0%, rgba(255,255,255,0) 62%),' +
+      'radial-gradient(85% 65% at 82% 104%, rgba(24,19,16,.30) 0%, rgba(24,19,16,0) 66%),' +
+      'linear-gradient(' + (btn.getAttribute('data-ang') || '160deg') + ',' +
+      btn.getAttribute('data-c1') + ' 0%,' + btn.getAttribute('data-c2') + ' 54%,' + btn.getAttribute('data-c3') + ' 100%)';
+    lb.hidden = false;
+    lb.style.visibility = 'visible';
+    requestAnimationFrame(function () { lb.classList.add('is-open'); });
+    document.body.classList.add('is-locked');
+    if (lbClose) lbClose.focus();
+  }
+  function closeLightbox() {
+    if (!lb || !lb.classList.contains('is-open')) return;
+    lb.classList.remove('is-open');
+    document.body.classList.remove('is-locked');
+    window.setTimeout(function () { lb.hidden = true; lb.style.visibility = ''; }, 340);
+    if (lbOpener && lbOpener.focus) lbOpener.focus();
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('.tile'), function (b) {
+    b.addEventListener('click', function () { openLightbox(b); });
+  });
+  if (lbClose) lbClose.addEventListener('click', closeLightbox);
+  if (lb) {
+    lb.addEventListener('click', function (e) { if (e.target === lb) closeLightbox(); });
+  }
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      closeLightbox();
+      if (document.body.classList.contains('menu-open')) setMenu(false);
+    }
+  });
+
+  /* ---------- enquiry form ----------
+     Static sample: there is no backend here. To make it real, either
+     point the <form> at a host that handles POSTs (Netlify Forms,
+     Formspree, your own endpoint) and remove the JS below, or swap the
+     block for a fetch() to your API.                              */
+  var form = document.getElementById('enquiry');
+  var status = document.getElementById('formStatus');
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var name = form.querySelector('#f-name');
+      var email = form.querySelector('#f-email');
+      if (!name.value.trim() || !email.value.trim() || email.value.indexOf('@') < 1) {
+        if (status) {
+          status.textContent = 'Please add your name and a valid email so I can reply.';
+          status.classList.add('is-error');
+        }
+        (name.value.trim() ? email : name).focus();
+        return;
+      }
+      if (status) { status.textContent = ''; status.classList.remove('is-error'); }
+      form.classList.add('is-sent');
+      var sent = document.getElementById('sent');
+      if (sent && sent.focus) { sent.setAttribute('tabindex', '-1'); sent.focus(); }
+    });
+  }
+
+  /* ---------- smooth anchor scroll (fallback for browsers without CSS scroll-behavior) ---------- */
+  if (!('scrollBehavior' in document.documentElement.style)) {
+    Array.prototype.forEach.call(document.querySelectorAll('a[href^="#"]'), function (a) {
+      a.addEventListener('click', function (e) {
+        var t = document.querySelector(a.getAttribute('href'));
+        if (!t) return;
+        e.preventDefault();
+        window.scrollTo(0, t.getBoundingClientRect().top + window.pageYOffset - 72);
+      });
+    });
+  }
+})();
+</script>
+
+<style>
+  /* scroll offset for the fixed header */
+  section[id], main[id]{scroll-margin-top:80px}
+  @media (max-width:1080px){ section[id], main[id]{scroll-margin-top:72px} }
+</style>
+</body>
+</html>

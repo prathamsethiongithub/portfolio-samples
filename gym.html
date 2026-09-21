@@ -1,0 +1,1844 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IronCore Fitness — Strength, Conditioning &amp; Recovery in Indiranagar</title>
+<meta name="description" content="IronCore Fitness, Indiranagar. Coached strength and powerlifting, conditioning, boxing and a recovery room. Three memberships, no lock-in traps. Book a trial session.">
+<meta name="theme-color" content="#0A0A0C">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A0A0C'/%3E%3Cpath d='M16 4l9 5.2v13.6L16 28l-9-5.2V9.2z' fill='none' stroke='%23FF4A1C' stroke-width='2'/%3E%3Cpath d='M16 11l4.5 2.6v5.2L16 21.4l-4.5-2.6v-5.2z' fill='%23FF4A1C'/%3E%3C/svg%3E">
+<script>
+  /* Progressive enhancement flag: content stays visible if JS never runs. */
+  document.documentElement.classList.remove('no-js');
+  document.documentElement.classList.add('js');
+</script>
+<style>
+/* ============================================================
+   IRONCORE FITNESS — design tokens
+   Palette discipline: 1 base (charcoal), 1 accent (forge orange),
+   0 supporting accents + purposeful neutrals. No glow blobs,
+   no particles, no external assets.
+   ============================================================ */
+:root{
+  --bg:            #0A0A0C;
+  --bg-raise:      #101013;
+  --bg-card:       #141418;
+  --bg-deep:       #0D0D10;
+
+  --line:          rgba(255,255,255,.085);
+  --line-2:        rgba(255,255,255,.14);
+  --line-3:        rgba(255,255,255,.22);
+
+  --fg:            #F3F1ED;
+  --fg-dim:        #A6A39E;
+  --fg-mute:       #6D6A66;
+  --fg-kicker:     #8E8A83;   /* de-emphasised, still legible */
+
+  --accent:        #FF4A1C;
+  --accent-hi:     #FF6537;
+  --accent-soft:   rgba(255,74,28,.10);
+  --accent-line:   rgba(255,74,28,.38);
+
+  --steel:         #8B94A0;
+
+  --sans: "Bahnschrift", "DIN Alternate", "Segoe UI Variable Display", "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, "Cascadia Mono", "SFMono-Regular", "SF Mono", Consolas, "Liberation Mono", monospace;
+
+  --pad: clamp(1.15rem, 4.2vw, 2.75rem);
+  --maxw: 1200px;
+
+  --r-sm: 2px;
+  --r-md: 3px;
+
+  --ease: cubic-bezier(.22,.61,.36,1);
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+
+html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--fg);
+  font-family:var(--body);
+  font-size:1rem;
+  line-height:1.65;
+  font-synthesis-weight:none;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+/* Faint structural grid over the whole page — the "engineering" tell. */
+body::before{
+  content:"";
+  position:fixed; inset:0;
+  pointer-events:none; z-index:0;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,.022) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,.022) 1px, transparent 1px);
+  background-size:96px 96px;
+  mask-image:linear-gradient(180deg, rgba(0,0,0,.9), rgba(0,0,0,.25) 55%, transparent);
+  -webkit-mask-image:linear-gradient(180deg, rgba(0,0,0,.9), rgba(0,0,0,.25) 55%, transparent);
+}
+
+img,svg{ display:block; max-width:100%; }
+a{ color:inherit; text-decoration:none; }
+button,input,select,textarea{ font:inherit; color:inherit; }
+
+::selection{ background:var(--accent); color:#0A0A0C; }
+
+:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:3px;
+  border-radius:1px;
+}
+
+/* ---------- primitives ---------- */
+.wrap{
+  width:100%;
+  max-width:var(--maxw);
+  margin-inline:auto;
+  padding-inline:var(--pad);
+}
+
+.mono{
+  font-family:var(--mono);
+  font-size:.7rem;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  font-weight:500;
+}
+
+.eyebrow{
+  display:inline-flex; align-items:center; gap:.7rem;
+  font-family:var(--mono);
+  font-size:.7rem; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--fg-mute);
+}
+.eyebrow .num{ color:var(--accent); }
+.eyebrow::after{
+  content:""; width:34px; height:1px; background:var(--line-2);
+}
+
+h1,h2,h3,h4{
+  font-family:var(--sans);
+  font-weight:800;
+  margin:0;
+  text-wrap:balance;
+}
+
+.h-display{
+  font-size:clamp(2.55rem, 8.4vw, 6rem);
+  line-height:.92;
+  letter-spacing:-.035em;
+  text-transform:uppercase;
+}
+
+.h-sec{
+  font-size:clamp(1.75rem, 4.3vw, 3rem);
+  line-height:1.02;
+  letter-spacing:-.022em;
+  text-transform:uppercase;
+}
+
+.lede{
+  color:var(--fg-dim);
+  font-size:clamp(.98rem, 1.4vw, 1.075rem);
+  line-height:1.68;
+  max-width:60ch;
+  margin:0;
+}
+
+.accent{ color:var(--accent); }
+
+.rule{ height:1px; background:var(--line); border:0; margin:0; }
+
+/* ---------- buttons ---------- */
+.btn{
+  --bg-btn:transparent;
+  position:relative;
+  display:inline-flex; align-items:center; justify-content:center; gap:.6rem;
+  padding:.95rem 1.45rem;
+  border:1px solid var(--line-2);
+  border-radius:var(--r-sm);
+  background:var(--bg-btn);
+  font-family:var(--mono);
+  font-size:.74rem; font-weight:600;
+  letter-spacing:.15em; text-transform:uppercase;
+  white-space:nowrap;
+  cursor:pointer;
+  overflow:hidden;
+  transition:border-color .25s var(--ease), color .25s var(--ease),
+             background-color .25s var(--ease), transform .25s var(--ease);
+}
+.btn svg{ flex:none; }
+.btn:hover{ transform:translateY(-1px); }
+.btn:active{ transform:translateY(0); }
+
+.btn-primary{
+  background:var(--accent);
+  border-color:var(--accent);
+  color:#0A0A0C;
+  font-weight:700;
+}
+.btn-primary:hover{ background:var(--accent-hi); border-color:var(--accent-hi); }
+
+.btn-ghost{ background:transparent; color:var(--fg); }
+.btn-ghost:hover{ border-color:var(--accent-line); color:var(--accent); background:var(--accent-soft); }
+
+.btn-block{ width:100%; }
+
+/* ---------- scroll progress ---------- */
+.progress{
+  position:fixed; inset:0 0 auto 0; height:2px; z-index:90;
+  background:transparent; pointer-events:none;
+}
+.progress i{
+  display:block; height:100%; width:0;
+  background:linear-gradient(90deg, var(--accent), var(--accent-hi));
+  transform-origin:0 50%;
+}
+
+/* ---------- skip link ---------- */
+.skip{
+  position:absolute; left:-9999px; top:0; z-index:200;
+  padding:.8rem 1.2rem; background:var(--accent); color:#0A0A0C;
+  font-family:var(--mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase;
+}
+.skip:focus{ left:1rem; top:1rem; }
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.nav{
+  position:sticky; top:0; z-index:80;
+  border-bottom:1px solid transparent;
+  transition:background-color .3s var(--ease), border-color .3s var(--ease), backdrop-filter .3s var(--ease);
+}
+.nav.scrolled{
+  background:rgba(10,10,12,.82);
+  backdrop-filter:blur(14px) saturate(140%);
+  -webkit-backdrop-filter:blur(14px) saturate(140%);
+  border-bottom-color:var(--line);
+}
+.nav-in{
+  display:flex; align-items:center; justify-content:space-between; gap:1.5rem;
+  height:74px;
+}
+.brand{ display:inline-flex; align-items:center; gap:.7rem; }
+.brand-mark{ width:26px; height:26px; flex:none; }
+.brand-name{
+  font-family:var(--sans);
+  font-size:1.02rem; font-weight:800; letter-spacing:.02em;
+  text-transform:uppercase;
+}
+.brand-name b{ color:var(--accent); font-weight:800; }
+
+.nav-links{ display:flex; align-items:center; gap:2rem; }
+.nav-links a{
+  font-family:var(--mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--fg-dim);
+  padding:.35rem 0;
+  position:relative;
+  transition:color .2s var(--ease);
+}
+.nav-links a::after{
+  content:""; position:absolute; left:0; right:100%; bottom:0; height:1px;
+  background:var(--accent);
+  transition:right .3s var(--ease);
+}
+.nav-links a:hover{ color:var(--fg); }
+.nav-links a:hover::after{ right:0; }
+
+.nav-right{ display:flex; align-items:center; gap:1rem; }
+.nav-cta{ padding:.7rem 1.1rem; font-size:.68rem; }
+
+.burger{
+  display:none;
+  width:42px; height:38px;
+  border:1px solid var(--line-2); border-radius:var(--r-sm);
+  background:transparent; cursor:pointer;
+  align-items:center; justify-content:center;
+}
+.burger span{
+  display:block; width:16px; height:1.5px; background:var(--fg);
+  position:relative; transition:background-color .2s var(--ease);
+}
+.burger span::before,.burger span::after{
+  content:""; position:absolute; left:0; width:16px; height:1.5px; background:var(--fg);
+  transition:transform .28s var(--ease), top .28s var(--ease);
+}
+.burger span::before{ top:-5px; }
+.burger span::after{ top:5px; }
+.burger[aria-expanded="true"] span{ background:transparent; }
+.burger[aria-expanded="true"] span::before{ top:0; transform:rotate(45deg); }
+.burger[aria-expanded="true"] span::after{ top:0; transform:rotate(-45deg); }
+
+.drawer{
+  display:none;
+  border-top:1px solid var(--line);
+  background:rgba(10,10,12,.97);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+}
+.drawer.open{ display:block; }
+.drawer ul{ list-style:none; margin:0; padding:.5rem 0 1.5rem; }
+.drawer li{ border-bottom:1px solid var(--line); }
+.drawer a{
+  display:block; padding:1.05rem 0;
+  font-family:var(--mono); font-size:.78rem; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--fg-dim);
+}
+.drawer .drawer-cta{ padding-block:1.4rem 0; border-bottom:0; }
+
+/* ============================================================
+   HERO — asymmetric split, structural geometry (not a blob)
+   ============================================================ */
+.hero{
+  position:relative;
+  overflow:hidden;
+  border-bottom:1px solid var(--line);
+  background:
+    radial-gradient(120% 70% at 82% 4%, rgba(255,74,28,.09), transparent 58%),
+    linear-gradient(200deg, transparent 41.8%, rgba(255,255,255,.045) 42%, transparent 42.6%),
+    linear-gradient(160deg, #0E0E12 0%, var(--bg) 62%);
+}
+/* concentric rings = recurring brand motif */
+.hero-rings{
+  position:absolute;
+  top:-24%; right:-16%;
+  width:min(760px, 92vw); aspect-ratio:1;
+  pointer-events:none;
+  z-index:0;
+}
+.hero-rings i{
+  position:absolute; inset:0; border-radius:50%;
+  border:1px solid rgba(255,255,255,.055);
+}
+.hero-rings i:nth-child(1){ inset:0; }
+.hero-rings i:nth-child(2){ inset:14%; border-color:rgba(255,74,28,.16); }
+.hero-rings i:nth-child(3){ inset:30%; border-color:rgba(255,255,255,.045); }
+.hero-rings i:nth-child(4){ inset:45%; border-color:rgba(255,74,28,.10); }
+
+.hero-grid{
+  position:relative; z-index:2;
+  display:grid;
+  grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);
+  gap:clamp(2.5rem, 5vw, 4.5rem);
+  align-items:end;
+  padding-block:clamp(3.5rem, 8vw, 7rem) clamp(3rem, 6vw, 5rem);
+}
+
+.hero h1{ margin-top:1.6rem; }
+.hero h1 .thin{
+  display:block;
+  font-weight:400;
+  letter-spacing:-.01em;
+  color:var(--fg-kicker);
+}
+.hero h1 .hot{ color:var(--accent); }
+
+.hero-copy .lede{ margin-top:1.7rem; max-width:46ch; }
+
+.hero-actions{
+  display:flex; flex-wrap:wrap; gap:.75rem;
+  margin-top:2.1rem;
+}
+
+.hero-note{
+  margin-top:1.6rem;
+  display:flex; align-items:flex-start; gap:.6rem;
+  font-family:var(--mono); font-size:.68rem; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--fg-mute);
+  line-height:1.7;
+}
+.hero-note svg{ margin-top:2px; flex:none; }
+
+/* spec-sheet stat rail */
+.rail{
+  border:1px solid var(--line);
+  border-radius:var(--r-md);
+  background:linear-gradient(180deg, rgba(255,255,255,.028), rgba(255,255,255,0) 60%), var(--bg-deep);
+}
+.rail-head{
+  display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  padding:.85rem 1.15rem;
+  border-bottom:1px solid var(--line);
+  font-family:var(--mono); font-size:.66rem; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--fg-mute);
+}
+.rail-head .dot{
+  display:inline-flex; align-items:center; gap:.45rem;
+}
+.rail-head .dot::before{
+  content:""; width:6px; height:6px; border-radius:50%; background:var(--accent);
+}
+.rail-row{
+  display:flex; align-items:baseline; justify-content:space-between; gap:1.25rem;
+  padding:1.15rem;
+  border-bottom:1px solid var(--line);
+}
+.rail-row:last-of-type{ border-bottom:0; }
+.rail-num{
+  font-family:var(--mono);
+  font-size:clamp(1.5rem, 3.2vw, 2.1rem);
+  font-weight:600;
+  letter-spacing:-.02em;
+  font-variant-numeric:tabular-nums;
+  line-height:1;
+}
+.rail-num sup{ font-size:.5em; color:var(--fg-mute); margin-left:.1em; }
+.rail-label{
+  font-family:var(--mono); font-size:.66rem; letter-spacing:.15em; text-transform:uppercase;
+  color:var(--fg-mute); text-align:right; line-height:1.6;
+}
+.rail-foot{
+  padding:.85rem 1.15rem;
+  border-top:1px solid var(--line);
+  font-family:var(--mono); font-size:.64rem; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--fg-mute);
+}
+
+/* ---------- discipline ticker (pace change between sections) ---------- */
+.ticker{
+  border-bottom:1px solid var(--line);
+  background:var(--bg-deep);
+  overflow:hidden;
+  padding-block:.95rem;
+}
+.ticker-track{
+  display:flex; width:max-content;
+  animation:slide 42s linear infinite;
+}
+.ticker-track span{
+  display:inline-flex; align-items:center; gap:1.6rem;
+  padding-right:1.6rem;
+  font-family:var(--mono); font-size:.68rem; letter-spacing:.24em; text-transform:uppercase;
+  color:var(--fg-mute);
+  white-space:nowrap;
+}
+.ticker-track span::after{
+  content:""; width:4px; height:4px; background:var(--accent); opacity:.7;
+  transform:rotate(45deg);
+}
+@keyframes slide{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+
+/* ============================================================
+   SECTION SCAFFOLD
+   ============================================================ */
+.section{ position:relative; z-index:2; }
+.section-pad{ padding-block:clamp(4rem, 9vw, 7.5rem); }
+.section-pad-sm{ padding-block:clamp(3rem, 6vw, 5rem); }
+
+.sec-head{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,.72fr);
+  gap:clamp(1.5rem, 4vw, 3.5rem);
+  align-items:end;
+  margin-bottom:clamp(2.25rem, 4.5vw, 3.5rem);
+}
+.sec-head h2{ margin-top:1.15rem; }
+.sec-head .lede{ padding-bottom:.3rem; }
+
+/* ============================================================
+   PROGRAMS — bordered rows, not cards (rhythm variety)
+   ============================================================ */
+.programs{ background:var(--bg); }
+.programs-grid{
+  display:grid;
+  grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);
+  gap:clamp(2rem, 5vw, 4.5rem);
+  align-items:start;
+}
+.programs-intro h2{ margin-top:1.15rem; }
+.programs-intro .lede{ margin-top:1.3rem; }
+.side-note{
+  margin-top:2.2rem;
+  padding:1.15rem;
+  border:1px solid var(--line);
+  border-left:2px solid var(--accent);
+  border-radius:var(--r-sm);
+  background:var(--bg-raise);
+}
+.side-note .mono{ color:var(--accent); }
+.side-note p{
+  margin:.6rem 0 0;
+  font-size:.9rem; line-height:1.6; color:var(--fg-dim);
+}
+
+.prog-list{ border-top:1px solid var(--line); }
+.prog{
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr) auto;
+  gap:clamp(1rem, 3vw, 2.25rem);
+  align-items:start;
+  padding:1.5rem .25rem;
+  border-bottom:1px solid var(--line);
+  position:relative;
+  transition:background-color .3s var(--ease), padding-left .3s var(--ease);
+}
+.prog::before{
+  content:""; position:absolute; left:0; top:0; bottom:0; width:2px;
+  background:var(--accent);
+  transform:scaleY(0); transform-origin:50% 0;
+  transition:transform .35s var(--ease);
+}
+.prog:hover{ background:linear-gradient(90deg, rgba(255,255,255,.03), transparent 70%); padding-left:1.1rem; }
+.prog:hover::before{ transform:scaleY(1); }
+.prog-idx{
+  font-family:var(--mono); font-size:.72rem; letter-spacing:.1em;
+  color:var(--fg-mute); padding-top:.35rem;
+  transition:color .3s var(--ease);
+}
+.prog:hover .prog-idx{ color:var(--accent); }
+.prog h3{
+  font-size:clamp(1.05rem, 2.1vw, 1.4rem);
+  letter-spacing:-.01em;
+  text-transform:uppercase;
+  line-height:1.15;
+}
+.prog p{
+  margin:.6rem 0 0;
+  color:var(--fg-dim); font-size:.92rem; line-height:1.62;
+  max-width:52ch;
+}
+.prog-meta{
+  display:flex; flex-direction:column; align-items:flex-end; gap:.4rem;
+  font-family:var(--mono); font-size:.64rem; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--fg-mute); text-align:right; white-space:nowrap; padding-top:.3rem;
+}
+.prog-meta b{ color:var(--fg); font-weight:600; }
+
+/* ============================================================
+   PRICING
+   ============================================================ */
+.pricing{
+  background:
+    linear-gradient(180deg, var(--bg-deep), var(--bg) 40%);
+  border-block:1px solid var(--line);
+}
+.price-head{
+  display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between;
+  gap:1.75rem;
+  margin-bottom:clamp(2.25rem, 4.5vw, 3.25rem);
+}
+.price-head h2{ margin-top:1.15rem; }
+
+.toggle{
+  display:inline-flex; align-items:center; gap:.9rem;
+  padding:.45rem .5rem .45rem .9rem;
+  border:1px solid var(--line-2); border-radius:var(--r-sm);
+  background:var(--bg-raise);
+}
+.toggle-label{
+  font-family:var(--mono); font-size:.68rem; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--fg-mute); transition:color .25s var(--ease);
+}
+.toggle-label.on{ color:var(--fg); }
+.save-tag{
+  font-family:var(--mono); font-size:.6rem; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--accent); border:1px solid var(--accent-line); border-radius:999px;
+  padding:.28rem .55rem; background:var(--accent-soft);
+}
+.switch{
+  position:relative; width:52px; height:26px; flex:none;
+  border:1px solid var(--line-2); border-radius:999px;
+  background:var(--bg); cursor:pointer; padding:0;
+}
+.switch::after{
+  content:""; position:absolute; top:2px; left:2px;
+  width:20px; height:20px; border-radius:50%;
+  background:var(--fg-mute);
+  transition:transform .3s var(--ease), background-color .3s var(--ease);
+}
+.switch[aria-checked="true"]::after{ transform:translateX(26px); background:var(--accent); }
+
+.tiers{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:1.15rem;
+  align-items:stretch;   /* equal heights so the CTAs line up across plans */
+}
+
+.tier{
+  position:relative;
+  display:flex; flex-direction:column;
+  padding:1.65rem 1.5rem 1.5rem;
+  border:1px solid var(--line);
+  border-radius:var(--r-md);
+  background:var(--bg-raise);
+  transition:border-color .3s var(--ease), transform .3s var(--ease), background-color .3s var(--ease);
+}
+.tier:hover{ border-color:var(--line-2); transform:translateY(-2px); }
+
+.tier-hi{
+  background:linear-gradient(180deg, rgba(255,74,28,.07), rgba(255,74,28,0) 42%), var(--bg-card);
+  border-color:var(--accent-line);
+  /* No extra top padding: the badge clears the heading inside the normal
+     padding, and keeping it equal aligns the plan columns across all cards. */
+}
+.tier-hi:hover{ border-color:var(--accent); }
+.tier-flag{
+  position:absolute; top:0; left:1.5rem; transform:translateY(-50%);
+  display:inline-flex; align-items:center; gap:.4rem;
+  padding:.3rem .68rem;
+  background:var(--accent); color:#0A0A0C;
+  font-family:var(--mono); font-size:.6rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase;
+  border-radius:999px;
+}
+
+.tier-name{
+  font-family:var(--mono); font-size:.72rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--fg-dim);
+}
+.tier-hi .tier-name{ color:var(--accent); }
+.tier-for{
+  margin:.55rem 0 0; font-size:.86rem; color:var(--fg-mute); line-height:1.55;
+  min-height:2.7em;
+}
+.tier-price{
+  display:flex; align-items:baseline; gap:.35rem;
+  margin-top:1.25rem; padding-bottom:1.25rem;
+  border-bottom:1px solid var(--line);
+}
+.tier-price b{
+  font-family:var(--mono); font-weight:600;
+  font-size:clamp(2rem, 4.6vw, 2.65rem);
+  letter-spacing:-.03em; line-height:1; font-variant-numeric:tabular-nums;
+}
+.tier-price i{
+  font-style:normal; font-family:var(--mono); font-size:.72rem;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--fg-mute);
+}
+.tier-bill{
+  margin:.6rem 0 0;
+  /* Reserve two lines: the longest billing note otherwise wraps on a narrow
+     desktop card and pushes that card's feature list out of alignment. */
+  min-height:3.05em; line-height:1.5;
+  font-family:var(--mono); font-size:.67rem; letter-spacing:.11em; text-transform:uppercase;
+  color:var(--fg-mute);
+}
+.tier-bill.saving{ color:var(--accent); }
+
+.tier-head{ display:block; }
+.tier-body{ display:flex; flex-direction:column; flex:1 1 auto; }
+
+.tier-feats{ list-style:none; margin:1.4rem 0 1.75rem; padding:0; display:grid; gap:.7rem; }
+.tier-feats li{
+  display:grid; grid-template-columns:auto minmax(0,1fr); gap:.65rem;
+  font-size:.89rem; line-height:1.55; color:var(--fg-dim);
+}
+.tier-feats li svg{ margin-top:4px; flex:none; }
+.tier-feats li.off{ color:var(--fg-mute); }
+.tier-feats li.off svg path{ stroke:var(--fg-mute); }
+.tier-feats li b{ color:var(--fg); font-weight:600; }
+
+.tier-cta{ margin-top:auto; padding-top:1.5rem; border-top:1px solid var(--line); }
+
+.price-foot{
+  display:flex; flex-wrap:wrap; gap:.6rem 1.75rem; align-items:center;
+  margin-top:1.6rem;
+  font-family:var(--mono); font-size:.66rem; letter-spacing:.11em; text-transform:uppercase;
+  color:var(--fg-mute);
+}
+.price-foot span{ display:inline-flex; align-items:center; gap:.5rem; }
+.price-foot span::before{ content:""; width:4px; height:4px; background:var(--fg-mute); transform:rotate(45deg); }
+
+/* ============================================================
+   COACHES — variation through composition, not colour
+   ============================================================ */
+.coaches{ background:var(--bg); }
+.coach-head{ display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:1.5rem; margin-bottom:clamp(2.25rem,4.5vw,3.25rem); }
+.coach-head h2{ margin-top:1.15rem; }
+.coach-head .mono{ color:var(--fg-mute); max-width:30ch; line-height:1.9; text-align:right; }
+
+.coach-grid{
+  display:grid; grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:1.15rem;
+}
+.coach{
+  border:1px solid var(--line); border-radius:var(--r-md);
+  background:var(--bg-raise);
+  overflow:hidden;
+  transition:border-color .3s var(--ease), transform .3s var(--ease);
+}
+.coach:hover{ border-color:var(--line-2); transform:translateY(-3px); }
+
+.coach-tile{
+  position:relative;
+  aspect-ratio:4/3;
+  border-bottom:1px solid var(--line);
+  background:linear-gradient(165deg, #191920, #101014 70%);
+  overflow:hidden;
+}
+.coach-tile .shape{ position:absolute; inset:0; }
+/* A — rings, offset */
+.tile-a .shape{
+  background:
+    radial-gradient(closest-side, transparent 68%, rgba(255,255,255,.10) 69%, transparent 70%) 62% 42%/172px 172px no-repeat,
+    radial-gradient(closest-side, transparent 66%, rgba(255,74,28,.30) 67%, transparent 68%) 30% 74%/118px 118px no-repeat;
+}
+/* B — diagonal bars */
+.tile-b .shape{
+  background:
+    repeating-linear-gradient(58deg, rgba(255,255,255,.075) 0 2px, transparent 2px 20px),
+    linear-gradient(215deg, rgba(255,74,28,.16), transparent 52%);
+}
+/* C — arcs stacked */
+.tile-c .shape{
+  background:
+    repeating-radial-gradient(circle at 78% 88%, rgba(255,255,255,.085) 0 1px, transparent 1px 22px),
+    linear-gradient(20deg, rgba(255,74,28,.13), transparent 58%);
+}
+.coach-mono{
+  position:absolute; left:1.25rem; bottom:1.05rem; z-index:2;
+  font-family:var(--sans);
+  font-size:clamp(2.6rem, 5.5vw, 3.6rem);
+  font-weight:800; letter-spacing:-.04em; line-height:.85;
+  color:rgba(255,255,255,.16);
+}
+.coach-idx{
+  position:absolute; top:1.05rem; right:1.15rem; z-index:2;
+  font-family:var(--mono); font-size:.66rem; letter-spacing:.16em;
+  color:var(--fg-mute);
+}
+.coach-body{ padding:1.35rem 1.35rem 1.5rem; }
+.coach-body h3{ font-size:1.1rem; letter-spacing:-.01em; text-transform:uppercase; }
+.coach-role{
+  margin:.5rem 0 0; font-family:var(--mono); font-size:.66rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--accent);
+}
+.coach-body p{ margin:.9rem 0 0; font-size:.89rem; line-height:1.62; color:var(--fg-dim); }
+.coach-tags{
+  display:flex; flex-wrap:wrap; gap:.4rem; margin-top:1.1rem; padding-top:1.1rem;
+  border-top:1px solid var(--line);
+}
+.coach-tags span{
+  font-family:var(--mono); font-size:.63rem; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--fg-mute); border:1px solid var(--line); border-radius:var(--r-sm);
+  padding:.28rem .5rem;
+}
+
+/* ============================================================
+   TESTIMONIALS — asymmetric editorial grid
+   ============================================================ */
+.members{
+  background:var(--bg-deep);
+  border-block:1px solid var(--line);
+}
+.quote-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);
+  gap:1.15rem;
+  align-items:start;
+}
+.quote{
+  position:relative;
+  border:1px solid var(--line); border-radius:var(--r-md);
+  background:var(--bg-raise);
+  padding:clamp(1.5rem,3.4vw,2.4rem);
+}
+.quote-feature{
+  background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0) 55%), var(--bg-card);
+  border-color:var(--line-2);
+}
+.quote-mark{
+  font-family:var(--sans);
+  font-size:clamp(3.4rem, 7vw, 5rem);
+  line-height:.6; font-weight:800;
+  color:var(--accent); opacity:.22;
+  display:block; margin-bottom:.6rem;
+}
+.quote blockquote{ margin:0; }
+.quote-feature p{
+  margin:0;
+  font-family:var(--sans);
+  font-size:clamp(1.06rem, 2.3vw, 1.6rem);
+  font-weight:400; line-height:1.38; letter-spacing:-.014em;
+  text-wrap:pretty;
+}
+.quote:not(.quote-feature) p{
+  margin:0; font-size:.94rem; line-height:1.68; color:var(--fg-dim);
+}
+.quote-stack{ display:grid; gap:1.15rem; }
+.quote-stack .quote:nth-child(2){ margin-left:clamp(0px, 4vw, 2.5rem); }
+
+.quote-who{
+  display:flex; flex-wrap:wrap; align-items:center; gap:.7rem 1rem;
+  margin-top:1.5rem; padding-top:1.25rem;
+  border-top:1px solid var(--line);
+}
+.avatar{
+  width:38px; height:38px; flex:none; border-radius:var(--r-sm);
+  display:grid; place-items:center;
+  font-family:var(--mono); font-size:.68rem; font-weight:600; letter-spacing:.06em;
+  color:var(--fg); border:1px solid var(--line-2);
+  background:linear-gradient(150deg, #24242c, #14141a);
+}
+.quote-who b{ font-size:.9rem; font-weight:600; letter-spacing:-.005em; }
+.quote-who em{
+  display:block; font-style:normal; font-family:var(--mono); font-size:.6rem;
+  letter-spacing:.13em; text-transform:uppercase; color:var(--fg-mute); margin-top:.28rem;
+}
+.quote-out{
+  margin-left:auto;
+  font-family:var(--mono); font-size:.65rem; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--accent); border:1px solid var(--accent-line); background:var(--accent-soft);
+  border-radius:999px; padding:.3rem .6rem; white-space:nowrap;
+}
+
+/* ============================================================
+   CONTACT
+   ============================================================ */
+.contact{ background:var(--bg); }
+.contact-grid{
+  display:grid;
+  grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);
+  gap:clamp(2rem, 5vw, 4rem);
+  align-items:start;
+}
+.contact-info h2{ margin-top:1.15rem; }
+.contact-info .lede{ margin-top:1.3rem; }
+
+.info-list{ list-style:none; margin:2.25rem 0 0; padding:0; border-top:1px solid var(--line); }
+.info-list li{
+  display:grid; grid-template-columns:minmax(0,88px) minmax(0,1fr);
+  gap:1rem; padding:1rem 0; border-bottom:1px solid var(--line);
+}
+.info-list dt, .info-list .k{
+  font-family:var(--mono); font-size:.66rem; letter-spacing:.15em; text-transform:uppercase;
+  color:var(--fg-mute); margin-top:.28rem;
+}
+.info-list .v{ font-size:.92rem; line-height:1.6; color:var(--fg-dim); }
+.info-list .v a{ border-bottom:1px solid var(--line-2); transition:border-color .2s var(--ease), color .2s var(--ease); }
+.info-list .v a:hover{ color:var(--fg); border-bottom-color:var(--accent); }
+.info-list .v b{ color:var(--fg); font-weight:600; }
+
+.form-panel{
+  border:1px solid var(--line); border-radius:var(--r-md);
+  background:linear-gradient(180deg, rgba(255,255,255,.026), rgba(255,255,255,0) 40%), var(--bg-raise);
+  padding:clamp(1.4rem, 3.2vw, 2.2rem);
+}
+.form-panel h3{
+  font-size:.95rem; letter-spacing:.06em; text-transform:uppercase;
+}
+.form-panel .form-sub{
+  margin:.7rem 0 0; font-family:var(--mono); font-size:.67rem; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--fg-mute); line-height:1.8;
+}
+.form-grid{
+  display:grid; grid-template-columns:repeat(2, minmax(0,1fr));
+  gap:1rem 1rem; margin-top:1.7rem;
+}
+.field{ display:grid; gap:.5rem; }
+.field-full{ grid-column:1 / -1; }
+.field label{
+  font-family:var(--mono); font-size:.66rem; letter-spacing:.15em; text-transform:uppercase;
+  color:var(--fg-mute);
+}
+.field label .req{ color:var(--accent); }
+.field input, .field select, .field textarea{
+  width:100%;
+  padding:.85rem .9rem;
+  background:var(--bg-deep);
+  border:1px solid var(--line-2);
+  border-radius:var(--r-sm);
+  font-size:.94rem;
+  transition:border-color .22s var(--ease), background-color .22s var(--ease);
+}
+.field textarea{ resize:vertical; min-height:104px; line-height:1.6; }
+.field select{ appearance:none; background-image:linear-gradient(45deg, transparent 50%, var(--fg-mute) 50%), linear-gradient(135deg, var(--fg-mute) 50%, transparent 50%); background-position:calc(100% - 18px) 50%, calc(100% - 13px) 50%; background-size:5px 5px, 5px 5px; background-repeat:no-repeat; padding-right:2.4rem; }
+.field input:focus, .field select:focus, .field textarea:focus{
+  border-color:var(--accent); background:var(--bg-card);
+}
+.field input::placeholder, .field textarea::placeholder{ color:var(--fg-mute); }
+
+.form-actions{
+  display:flex; flex-wrap:wrap; align-items:center; gap:1rem;
+  margin-top:1.7rem; padding-top:1.5rem; border-top:1px solid var(--line);
+}
+.form-status{
+  margin:1rem 0 0; min-height:1.2em;
+  font-family:var(--mono); font-size:.63rem; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--accent); line-height:1.8;
+}
+.form-status.err{ color:#FF8A6B; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.foot{
+  border-top:1px solid var(--line);
+  background:var(--bg-deep);
+  padding-block:clamp(2.5rem, 5vw, 3.5rem) 1.5rem;
+}
+.foot-grid{
+  display:grid; grid-template-columns:minmax(0,1.4fr) repeat(2, minmax(0,1fr));
+  gap:2.25rem;
+}
+.foot p{ margin:1rem 0 0; color:var(--fg-mute); font-size:.87rem; line-height:1.7; max-width:38ch; }
+.foot h4{
+  font-family:var(--mono); font-size:.63rem; letter-spacing:.17em; text-transform:uppercase;
+  color:var(--fg-mute); font-weight:500;
+}
+.foot ul{ list-style:none; margin:1rem 0 0; padding:0; display:grid; gap:.65rem; }
+.foot ul a, .foot ul span{ font-size:.88rem; color:var(--fg-dim); transition:color .2s var(--ease); }
+.foot ul a:hover{ color:var(--accent); }
+.foot-bar{
+  display:flex; flex-wrap:wrap; gap:.75rem 1.5rem; align-items:center; justify-content:space-between;
+  margin-top:clamp(2rem,4vw,3rem); padding-top:1.4rem; border-top:1px solid var(--line);
+  font-family:var(--mono); font-size:.66rem; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--fg-mute); line-height:1.8;
+}
+
+/* ============================================================
+   WHATSAPP FLOATING BUTTON
+   ============================================================ */
+.wa{
+  position:fixed;
+  right:clamp(1rem, 3vw, 1.75rem);
+  bottom:calc(clamp(1rem, 3vw, 1.75rem) + env(safe-area-inset-bottom, 0px));
+  z-index:85;
+  display:inline-flex; align-items:center; gap:.7rem;
+  padding:.7rem;
+  border:1px solid rgba(37,211,102,.42);
+  border-radius:999px;
+  background:rgba(12,14,13,.92);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  color:var(--fg);
+  box-shadow:0 10px 30px rgba(0,0,0,.45);
+  transition:background-color .28s var(--ease), border-color .28s var(--ease), transform .28s var(--ease), padding .28s var(--ease);
+}
+.wa-badge{
+  width:46px; height:46px; flex:none;
+  display:grid; place-items:center;
+  border-radius:50%;
+  background:rgba(37,211,102,.10);
+  color:#25D366;
+  transition:background-color .28s var(--ease), color .28s var(--ease);
+}
+.wa-text{
+  font-family:var(--mono); font-size:.66rem; letter-spacing:.14em; text-transform:uppercase;
+  max-width:0; overflow:hidden; white-space:nowrap; opacity:0;
+  transition:max-width .35s var(--ease), opacity .28s var(--ease), padding-right .35s var(--ease);
+}
+.wa:hover, .wa:focus-visible{
+  background:rgba(37,211,102,.96);
+  border-color:#25D366;
+  color:#06170D;
+  transform:translateY(-2px);
+}
+.wa:hover .wa-badge, .wa:focus-visible .wa-badge{ background:#06170D; color:#25D366; }
+.wa:hover .wa-text, .wa:focus-visible .wa-text{ max-width:14rem; opacity:1; padding-right:.7rem; }
+.wa::after{
+  content:""; position:absolute; inset:-1px; border-radius:999px;
+  border:1px solid rgba(37,211,102,.35);
+  opacity:0; pointer-events:none;
+}
+
+/* ============================================================
+   REVEAL (JS-gated, small travel, reduced-motion safe)
+   ============================================================ */
+.js .reveal{
+  opacity:0;
+  transform:translateY(14px);
+  transition:opacity .62s var(--ease), transform .62s var(--ease);
+  transition-delay:var(--d, 0ms);
+  will-change:opacity, transform;
+}
+.js .reveal.in{ opacity:1; transform:none; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1040px){
+  .hero-grid{ grid-template-columns:1fr; gap:2.75rem; align-items:start; }
+  .hero-rings{ top:-30%; right:-28%; width:min(620px,110vw); }
+  .rail{ max-width:560px; }
+  .programs-grid{ grid-template-columns:1fr; gap:2.5rem; }
+  .sec-head{ grid-template-columns:1fr; align-items:start; }
+  /* Tablet: recompose each plan as a horizontal row instead of stacking three
+     full-width cards into a single dull column. */
+  .tiers{ grid-template-columns:1fr; gap:1rem; }
+  .tier{
+    display:grid;
+    grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);
+    gap:0 clamp(1.5rem,4vw,3rem);
+    align-items:start;
+  }
+  .tier-for{ min-height:0; }
+  .tier-body{
+    border-left:1px solid var(--line);
+    padding-left:clamp(1.5rem,4vw,3rem);
+  }
+  .tier-cta{ margin-top:1.4rem; }
+  .quote-grid{ grid-template-columns:1fr; }
+  .quote-stack .quote:nth-child(2){ margin-left:0; }
+  .contact-grid{ grid-template-columns:1fr; }
+  .coach-head .mono{ text-align:left; }
+}
+
+@media (max-width: 880px){
+  .nav-links{ display:none; }
+  .nav-cta{ display:none; }
+  .burger{ display:inline-flex; }
+  .coach-grid{ grid-template-columns:1fr; }
+  .coach-tile{ aspect-ratio:16/9; }
+  .foot-grid{ grid-template-columns:1fr 1fr; }
+}
+
+@media (max-width: 620px){
+  :root{ --pad:1.15rem; }
+  .h-display{ font-size:clamp(2.3rem, 11.5vw, 3.4rem); }
+  .hero-grid{ padding-block:2.75rem 2.5rem; }
+  .hero-actions .btn{ flex:1 1 100%; }
+  .hero-rings{ top:-22%; right:-46%; opacity:.75; }
+  .rail{ max-width:none; }
+  .rail-row{ flex-direction:column; align-items:flex-start; gap:.45rem; padding:1rem; }
+  .rail-label{ text-align:left; }
+  .prog{ grid-template-columns:auto minmax(0,1fr); }
+  .prog-meta{ grid-column:2; flex-direction:row; align-items:center; gap:.9rem; padding-top:.65rem; }
+  .price-head{ flex-direction:column; align-items:flex-start; }
+  .tier{ grid-template-columns:1fr; gap:0; }
+  .tier-body{ border-left:0; padding-left:0; }
+  .tier-cta{ margin-top:auto; }
+  .form-grid{ grid-template-columns:1fr; }
+  .form-actions{ flex-direction:column; align-items:stretch; }
+  .form-actions .btn{ width:100%; }
+  .info-list li{ grid-template-columns:1fr; gap:.35rem; }
+  .foot-grid{ grid-template-columns:1fr; gap:1.9rem; }
+  .wa{ padding:.55rem; }
+  .wa-badge{ width:42px; height:42px; }
+  .quote-out{ margin-left:0; }
+  .ticker-track{ animation-duration:30s; }
+}
+
+/* Motion restraint: honour the OS setting. */
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  *,*::before,*::after{
+    animation-duration:.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;
+  }
+  .js .reveal{ opacity:1 !important; transform:none !important; }
+  .ticker-track{ animation:none; transform:none; }
+}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top" aria-label="IronCore Fitness — home">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+        <path d="M16 2.5l11.5 6.6v13.8L16 29.5 4.5 22.9V9.1z" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+        <path d="M16 9.5l5.6 3.2v6.6L16 22.5l-5.6-3.2v-6.6z" fill="#FF4A1C"/>
+      </svg>
+      <span class="brand-name">Iron<b>Core</b></span>
+    </a>
+
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#programs">Programs</a>
+      <a href="#pricing">Membership</a>
+      <a href="#coaches">Coaches</a>
+      <a href="#members">Members</a>
+      <a href="#join">Contact</a>
+    </nav>
+
+    <div class="nav-right">
+      <a class="btn btn-primary nav-cta" href="#join">Book a trial</a>
+      <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Open menu">
+        <span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="drawer" id="drawer">
+    <div class="wrap">
+      <ul>
+        <li><a href="#programs" data-close>Programs</a></li>
+        <li><a href="#pricing" data-close>Membership</a></li>
+        <li><a href="#coaches" data-close>Coaches</a></li>
+        <li><a href="#members" data-close>Members</a></li>
+        <li><a href="#join" data-close>Contact</a></li>
+        <li class="drawer-cta"><a class="btn btn-primary btn-block" href="#join" data-close>Book a trial</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="hero-rings" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow reveal"><span class="num">Indiranagar</span> · Bengaluru · Est. 2014</p>
+
+      <h1 class="h-display reveal" style="--d:60ms">
+        <span class="thin">Train like it</span>
+        Actually<br>Matters<span class="hot">.</span>
+      </h1>
+
+      <p class="lede reveal" style="--d:120ms">
+        A 9,200 sq ft strength floor where a coach watches every working set.
+        Coached powerlifting, conditioning, boxing and a recovery room — no
+        mirrored selfie wall, no 45-minute treadmill queue.
+      </p>
+
+      <div class="hero-actions reveal" style="--d:180ms">
+        <a class="btn btn-primary" href="#join">
+          Claim a free trial session
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/>
+          </svg>
+        </a>
+        <a class="btn btn-ghost" href="#pricing">See memberships</a>
+      </div>
+
+      <p class="hero-note reveal" style="--d:240ms">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M3 8.5l3.2 3.2L13 5" stroke="#FF4A1C" stroke-width="1.8" stroke-linecap="square"/>
+        </svg>
+        <span>No joining fee until 30 Sept &nbsp;·&nbsp; Month-to-month after the third month</span>
+      </p>
+    </div>
+
+    <aside class="rail reveal" style="--d:150ms" aria-label="IronCore at a glance">
+      <div class="rail-head">
+        <span class="dot">Open now</span>
+        <span>05:30 — 22:30</span>
+      </div>
+
+      <div class="rail-row">
+        <span class="rail-num" data-count="12">0</span>
+        <span class="rail-label">Years on<br>12th Main</span>
+      </div>
+      <div class="rail-row">
+        <span class="rail-num" data-count="1480">0</span>
+        <span class="rail-label">Active<br>members</span>
+      </div>
+      <div class="rail-row">
+        <span class="rail-num" data-count="9200">0<sup></sup></span>
+        <span class="rail-label">Sq ft of<br>strength floor</span>
+      </div>
+      <div class="rail-row">
+        <span class="rail-num" data-count="38">0</span>
+        <span class="rail-label">Coached slots<br>every week</span>
+      </div>
+
+      <div class="rail-foot">Calibrated plates · 9 racks · Cold plunge</div>
+    </aside>
+  </div>
+</section>
+
+<!-- ============ TICKER ============ -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track" id="tickerTrack">
+    <span>Powerlifting</span><span>Conditioning</span><span>Olympic Lifting</span><span>Boxing</span>
+    <span>Mobility &amp; Recovery</span><span>Cold Plunge</span><span>Body Composition Scans</span><span>1:1 Coaching</span>
+  </div>
+</div>
+
+<!-- ============ PROGRAMS ============ -->
+<section class="section section-pad programs" id="programs">
+  <div class="wrap programs-grid">
+    <div class="programs-intro">
+      <p class="eyebrow reveal"><span class="num">01</span> Programs</p>
+      <h2 class="h-sec reveal" style="--d:60ms">Four ways<br>to train here</h2>
+      <p class="lede reveal" style="--d:120ms">
+        Every programme is capped by rack count and coach count — never by
+        how many people we can fit through the door. You book a slot, you get
+        the equipment you came for.
+      </p>
+
+      <div class="side-note reveal" style="--d:180ms">
+        <p class="mono">New here?</p>
+        <p>
+          Your first session is a 50-minute assessment: movement screen,
+          strength baselines, and a programme written for your week — not a
+          generic 7-day pass.
+        </p>
+      </div>
+    </div>
+
+    <div class="prog-list">
+      <article class="prog reveal">
+        <span class="prog-idx">01</span>
+        <div>
+          <h3>Strength &amp; Powerlifting</h3>
+          <p>
+            Barbell-first programming on calibrated plates and competition
+            bars. Squat, bench, deadlift and press with a coach checking your
+            setup on every heavy set.
+          </p>
+        </div>
+        <div class="prog-meta"><b>90 min</b><span>Max 8 / slot</span><span>Mon–Sat</span></div>
+      </article>
+
+      <article class="prog reveal" style="--d:60ms">
+        <span class="prog-idx">02</span>
+        <div>
+          <h3>Conditioning &amp; Engine</h3>
+          <p>
+            Rowing, sled, assault bike and threshold intervals, re-tested
+            every four weeks. You'll see the numbers move on a sheet, not
+            just feel tired.
+          </p>
+        </div>
+        <div class="prog-meta"><b>50 min</b><span>Max 12 / slot</span><span>6× weekly</span></div>
+      </article>
+
+      <article class="prog reveal" style="--d:120ms">
+        <span class="prog-idx">03</span>
+        <div>
+          <h3>Boxing &amp; Combat Conditioning</h3>
+          <p>
+            Pads, heavy bags, footwork ladders and core work under fatigue.
+            Technique blocks before intensity — beginners are not thrown into
+            a conditioning grinder on day one.
+          </p>
+        </div>
+        <div class="prog-meta"><b>60 min</b><span>Max 16 / slot</span><span>4× weekly</span></div>
+      </article>
+
+      <article class="prog reveal" style="--d:180ms">
+        <span class="prog-idx">04</span>
+        <div>
+          <h3>Mobility &amp; Recovery</h3>
+          <p>
+            Loaded stretches, soft-tissue work and guided breathing, plus
+            sauna and cold plunge access. Built for the desk-heavy, the
+            post-injury and the over-40 lifters.
+          </p>
+        </div>
+        <div class="prog-meta"><b>40 min</b><span>Max 10 / slot</span><span>Daily</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section class="section section-pad pricing" id="pricing">
+  <div class="wrap">
+    <div class="price-head">
+      <div>
+        <p class="eyebrow reveal"><span class="num">02</span> Membership</p>
+        <h2 class="h-sec reveal" style="--d:60ms">Three plans.<br>No lock-in theatre.</h2>
+      </div>
+
+      <div class="toggle reveal" style="--d:120ms">
+        <span class="toggle-label on" id="lblMonthly">Monthly</span>
+        <button class="switch" id="billSwitch" type="button" role="switch" aria-checked="false" aria-label="Switch to annual billing"></button>
+        <span class="toggle-label" id="lblAnnual">Annual</span>
+        <span class="save-tag">Save 20%</span>
+      </div>
+    </div>
+
+    <div class="tiers">
+
+      <!-- BASE -->
+      <article class="tier reveal">
+        <div class="tier-head">
+          <h3 class="tier-name">Iron Base</h3>
+          <p class="tier-for">For self-directed lifters who already know their way around a rack.</p>
+
+          <div class="tier-price">
+            <b data-m="2499" data-a="1999">₹2,499</b>
+            <i>/ month</i>
+          </div>
+          <p class="tier-bill" data-bill>Billed monthly · cancel with 15 days' notice</p>
+        </div>
+
+        <div class="tier-body">
+          <ul class="tier-feats">
+          <li><svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7.4l2.9 2.9L11.5 3.8" stroke="#FF4A1C" stroke-width="1.8" stroke-linecap="square"/></svg><span>Full gym floor access, <b>05:30 – 16:00</b></span></li>
+          <li><svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7.4l2.9 2.9L11.5 3.8" stroke="#FF4A1C" stroke-width="1.8" stroke-linecap="square"/></svg><span>Equipment induction + starter programme</span></li>
+          <li><svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7.4l2.9 2.9L11.5 3.8" stroke="#FF4A1C" stroke-width="1.8" stroke-linecap="square"/></svg><span>One body-composition scan per quarter</span></li>
+          <li><svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7.4l2.9 2.9L11.5 3.8" stroke="#FF4A1C" stroke-width="1.8" stroke-linecap="square"/></svg><span>IronCore app: workout log &amp; slot booking</span></li>
+          <li class="off"><svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3.5 3.5l7 7M10.5 3.5l-7 7" stroke="#6D6A66" stroke-width="1.6" stroke-linecap="square"/></svg><span>Coached classes not included</span></li>
+          <li class="off"><svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3.5 3.5l7 7M10.5 3.5l-7 7" stroke="#6D6A66" stroke-width="1.6" stroke-linecap="square"/></svg><span>Recovery room not included</span></li>
+        </ul>
+
+        <div class="tier-cta">
+          <a class="btn btn-ghost btn-block" href="#join">Start with Base</a>
+        </div>
+        </div>
+      </article>
+
+      <!-- PRO -->
+      <article class="tier tier-hi reveal" style="--d:80ms">
+        <span class="tier-flag">Most chosen</span>
+        <div class="tier-head">
+          <h3 class="tier-name">Iron Pro</h3>
+          <p class="tier-for">The plan 6 of 10 members pick — coached training plus recovery, all day.</p>
+
+          <div class="tier-price">
+            <b data-m="3999" data-a="3199">₹3,999</b>
+            <i>/ month</i>
+          </div>
+          <p class="tier-bill saving" data-bill>Billed monthly · save ₹800/mo on annual</p>
+        </div>
+
+        <div class="tier-body">
+          <ul class="tier-feats">
+          <li><svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7.4l2.9 2.9L11.5 3.8" stroke="#FF4A1C" stroke-width="1.8" stroke-linecap="square"/></svg><span><b>Everything in Iron Base</b></span></li>
+          <li><svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7.4l2.9 2.9L11.5 3.8" stroke="#FF4A1C" stroke-width="1.8" stroke-linecap="square"/></svg><span>Unlimited coached classes (strength, conditioning, boxing)</span></li>
+          <li><svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7.4l2.9 2.9L11.5 3.8" stroke="#FF4A1C" stroke-width="1.8" stroke-linecap="square"/></svg><span>Full-day access <b>05:30 – 22:30</b></span></li>
+          <li><svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7.4l2.9 2.9L11.5 3.8" stroke="#FF4A1C" stroke-width="1.8" stroke-linecap="square"/></svg><span>Monthly scan + programme review with a coach</span></li>
+          <li><svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7.4l2.9 2.9L11.5 3.8" stroke="#FF4A1C" stroke-width="1.8" stroke-linecap="square"/></svg><span>Recovery room: sauna &amp; cold plunge, twice weekly</span></li>
+          <li><svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7.4l2.9 2.9L11.5 3.8" stroke="#FF4A1C" stroke-width="1.8" stroke-linecap="square"/></svg><span>Joining fee waived on 12-month sign-up</span></li>
+        </ul>
+
+        <div class="tier-cta">
+          <a class="btn btn-primary btn-block" href="#join">Book a Pro trial</a>
+        </div>
+        </div>
+      </article>
+
+      <!-- ELITE -->
+      <article class="tier reveal" style="--d:160ms">
+        <div class="tier-head">
+          <h3 class="tier-name">Iron Elite</h3>
+          <p class="tier-for">For competitors and anyone who wants a coach in the room, every week.</p>
+
+          <div class="tier-price">
+            <b data-m="6499" data-a="5199">₹6,499</b>
+            <i>/ month</i>
+          </div>
+          <p class="tier-bill" data-bill>Billed monthly · limited to 40 members</p>
+        </div>
+
+        <div class="tier-body">
+          <ul class="tier-feats">
+          <li><svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7.4l2.9 2.9L11.5 3.8" stroke="#FF4A1C" stroke-width="1.8" stroke-linecap="square"/></svg><span><b>Everything in Iron Pro</b></span></li>
+          <li><svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7.4l2.9 2.9L11.5 3.8" stroke="#FF4A1C" stroke-width="1.8" stroke-linecap="square"/></svg><span><b>4 × 1:1 personal training</b> sessions each month</span></li>
+          <li><svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7.4l2.9 2.9L11.5 3.8" stroke="#FF4A1C" stroke-width="1.8" stroke-linecap="square"/></svg><span>Unlimited recovery room access</span></li>
+          <li><svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7.4l2.9 2.9L11.5 3.8" stroke="#FF4A1C" stroke-width="1.8" stroke-linecap="square"/></svg><span>Reserved rack slot &amp; meet prep programming</span></li>
+          <li><svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7.4l2.9 2.9L11.5 3.8" stroke="#FF4A1C" stroke-width="1.8" stroke-linecap="square"/></svg><span>Partner rate on quarterly bloodwork panel</span></li>
+          <li><svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7.4l2.9 2.9L11.5 3.8" stroke="#FF4A1C" stroke-width="1.8" stroke-linecap="square"/></svg><span>Two guest passes every month</span></li>
+        </ul>
+
+        <div class="tier-cta">
+          <a class="btn btn-ghost btn-block" href="#join">Apply for Elite</a>
+        </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="price-foot reveal">
+      <span>One-time joining fee ₹1,500</span>
+      <span>Waived on Elite &amp; annual plans</span>
+      <span>Student &amp; senior rate: 15% off Base</span>
+      <span>Prices include GST</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COACHES ============ -->
+<section class="section section-pad coaches" id="coaches">
+  <div class="wrap">
+    <div class="coach-head">
+      <div>
+        <p class="eyebrow reveal"><span class="num">03</span> Coaches</p>
+        <h2 class="h-sec reveal" style="--d:60ms">Three people<br>who'll know your name</h2>
+      </div>
+      <p class="mono reveal" style="--d:120ms">
+        14 floor staff total · 38 coached<br>slots on the board every week
+      </p>
+    </div>
+
+    <div class="coach-grid">
+      <article class="coach reveal">
+        <div class="coach-tile tile-a">
+          <div class="shape" aria-hidden="true"></div>
+          <span class="coach-idx">01 / Strength</span>
+          <span class="coach-mono" aria-hidden="true">AM</span>
+        </div>
+        <div class="coach-body">
+          <h3>Arjun Mehra</h3>
+          <p class="coach-role">Head Coach — Strength</p>
+          <p>
+            Eleven years under the bar, nine of them teaching it. Runs the
+            powerlifting block and the Tuesday night squat clinic. Certified
+            national-level referee.
+          </p>
+          <div class="coach-tags">
+            <span>Powerlifting</span><span>Squat clinic</span><span>Meet prep</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="coach reveal" style="--d:80ms">
+        <div class="coach-tile tile-b">
+          <div class="shape" aria-hidden="true"></div>
+          <span class="coach-idx">02 / Engine</span>
+          <span class="coach-mono" aria-hidden="true">SR</span>
+        </div>
+        <div class="coach-body">
+          <h3>Sneha Rathore</h3>
+          <p class="coach-role">Conditioning &amp; Mobility</p>
+          <p>
+            Former state-level 400 m hurdler turned programmer. Writes the
+            interval blocks and the post-injury returns — 40-plus members
+            back to pain-free training.
+          </p>
+          <div class="coach-tags">
+            <span>Threshold work</span><span>Rehab</span><span>Mobility</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="coach reveal" style="--d:160ms">
+        <div class="coach-tile tile-c">
+          <div class="shape" aria-hidden="true"></div>
+          <span class="coach-idx">03 / Combat</span>
+          <span class="coach-mono" aria-hidden="true">VN</span>
+        </div>
+        <div class="coach-body">
+          <h3>Vikram Nair</h3>
+          <p class="coach-role">Boxing &amp; Combat Conditioning</p>
+          <p>
+            Twelve amateur bouts, now eight years of pad work. Teaches
+            footwork before power and will stop a session to fix a jab three
+            times if that is what it takes.
+          </p>
+          <div class="coach-tags">
+            <span>Pad work</span><span>Footwork</span><span>Beginners</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="section section-pad members" id="members">
+  <div class="wrap">
+    <p class="eyebrow reveal"><span class="num">04</span> Members</p>
+    <h2 class="h-sec reveal" style="--d:60ms; max-width:16ch">What changed,<br>in numbers</h2>
+
+    <div class="quote-grid" style="margin-top:clamp(2.25rem,4.5vw,3.25rem)">
+      <article class="quote quote-feature reveal">
+        <span class="quote-mark" aria-hidden="true">&ldquo;</span>
+        <blockquote>
+          <p>
+            I'd written off squats after a disc flare-up in 2023. Sneha rebuilt
+            the movement from the ground up, reviewed the programme every four
+            weeks, and I was back under a loaded bar in eleven weeks — no
+            drama, no shortcuts.
+          </p>
+        </blockquote>
+        <div class="quote-who">
+          <span class="avatar" aria-hidden="true">MK</span>
+          <span><b>Meera Krishnan</b><em>Architect · Member since 2022</em></span>
+          <span class="quote-out">Back squatting in 11 weeks</span>
+        </div>
+      </article>
+
+      <div class="quote-stack">
+        <article class="quote reveal" style="--d:80ms">
+          <blockquote>
+            <p>
+              Walked in at 96 kg with a desk-job back. Seven months later I'm
+              82 and pulling 150. The thing that got me there is small: a coach
+              actually watching my setup instead of scrolling a phone.
+            </p>
+          </blockquote>
+          <div class="quote-who">
+            <span class="avatar" aria-hidden="true">AS</span>
+            <span><b>Aarav Shetty</b><em>Product manager · Member since 2023</em></span>
+            <span class="quote-out">−14 kg</span>
+          </div>
+        </article>
+
+        <article class="quote reveal" style="--d:140ms">
+          <blockquote>
+            <p>
+              The 05:30 slot is the only reason my CA prep and my training both
+              survived. Racks are free at that hour, plates are calibrated, and
+              nobody is filming a reel mid-set.
+            </p>
+          </blockquote>
+          <div class="quote-who">
+            <span class="avatar" aria-hidden="true">RD</span>
+            <span><b>Rohan D'Souza</b><em>Student · Member since 2021</em></span>
+            <span class="quote-out">4× weekly, 14 months</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section section-pad contact" id="join">
+  <div class="wrap contact-grid">
+    <div class="contact-info">
+      <p class="eyebrow reveal"><span class="num">05</span> Visit</p>
+      <h2 class="h-sec reveal" style="--d:60ms">Book a free<br>trial session</h2>
+      <p class="lede reveal" style="--d:120ms">
+        Come in, train with a coach, use the recovery room. No card details,
+        no pressure — if it isn't for you, you'll know in an hour.
+      </p>
+
+      <ul class="info-list">
+        <li class="reveal">
+          <span class="k">Floor</span>
+          <span class="v">
+            2nd Floor, Kalyani Arcade,<br>12th Main, Indiranagar,<br>Bengaluru 560038
+          </span>
+        </li>
+        <li class="reveal">
+          <span class="k">Call</span>
+          <span class="v"><a href="tel:+918047112200">+91 80 4711 2200</a></span>
+        </li>
+        <li class="reveal">
+          <span class="k">Email</span>
+          <span class="v"><a href="mailto:join@ironcorefitness.in?subject=Trial%20session%20enquiry">join@ironcorefitness.in</a></span>
+        </li>
+        <li class="reveal">
+          <span class="k">Hours</span>
+          <span class="v">
+            <b>Mon–Fri</b> 05:30 – 22:30<br>
+            <b>Sat</b> 06:00 – 21:00<br>
+            <b>Sun</b> 06:30 – 13:00
+          </span>
+        </li>
+        <li class="reveal">
+          <span class="k">Parking</span>
+          <span class="v">Basement, 40 two-wheelers &amp; 12 cars — validated at reception.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="form-panel reveal" style="--d:100ms">
+      <h3>Request your trial</h3>
+      <p class="form-sub">
+        Opens your mail app with the details filled in — or message us on
+        WhatsApp for a same-day reply.
+      </p>
+
+      <!-- No backend: form posts to mailto. JS enhances it with a prefilled draft. -->
+      <form id="trialForm" action="mailto:join@ironcorefitness.in" method="post" enctype="text/plain" novalidate>
+        <div class="form-grid">
+          <div class="field">
+            <label for="f-name">Your name <span class="req">*</span></label>
+            <input id="f-name" name="name" type="text" placeholder="Pratham Rao" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="f-phone">Phone <span class="req">*</span></label>
+            <input id="f-phone" name="phone" type="tel" inputmode="tel" placeholder="+91 98450 00000" autocomplete="tel" required>
+          </div>
+          <div class="field field-full">
+            <label for="f-goal">What are you training for?</label>
+            <select id="f-goal" name="goal">
+              <option>Strength &amp; powerlifting</option>
+              <option>Conditioning &amp; engine</option>
+              <option>Boxing &amp; combat conditioning</option>
+              <option>Mobility &amp; recovery</option>
+              <option>Not sure yet — help me pick</option>
+            </select>
+          </div>
+          <div class="field field-full">
+            <label for="f-msg">Anything we should know?</label>
+            <textarea id="f-msg" name="message" placeholder="Training history, injuries, preferred slot…"></textarea>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn btn-primary" type="submit">
+            Send trial request
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/>
+            </svg>
+          </button>
+          <a class="btn btn-ghost" href="https://wa.me/919845011234?text=Hi%20IronCore%2C%20I%27d%20like%20to%20book%20a%20trial%20session." target="_blank" rel="noopener">Chat on WhatsApp</a>
+        </div>
+
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="#top">
+          <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+            <path d="M16 2.5l11.5 6.6v13.8L16 29.5 4.5 22.9V9.1z" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+            <path d="M16 9.5l5.6 3.2v6.6L16 22.5l-5.6-3.2v-6.6z" fill="#FF4A1C"/>
+          </svg>
+          <span class="brand-name">Iron<b>Core</b></span>
+        </a>
+        <p>
+          A strength floor in Indiranagar, built around coaching rather than
+          capacity. Nine racks, calibrated plates, and a recovery room that
+          isn't a marketing photo.
+        </p>
+      </div>
+
+      <div>
+        <h4>Train</h4>
+        <ul>
+          <li><a href="#programs">Programs</a></li>
+          <li><a href="#pricing">Membership</a></li>
+          <li><a href="#coaches">Coaches</a></li>
+          <li><a href="#members">Member results</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Reach us</h4>
+        <ul>
+          <li><a href="tel:+918047112200">+91 80 4711 2200</a></li>
+          <li><a href="mailto:join@ironcorefitness.in">join@ironcorefitness.in</a></li>
+          <li><a href="https://wa.me/919845011234" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><span>12th Main, Indiranagar</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot-bar">
+      <span>© <span id="year">2026</span> IronCore Fitness</span>
+      <span>Demonstration page — IronCore Fitness is a fictional brand. Content is illustrative.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ WHATSAPP FLOATING BUTTON ============ -->
+<a class="wa" id="waButton"
+   href="https://wa.me/919845011234?text=Hi%20IronCore%2C%20I%27d%20like%20to%20know%20about%20memberships."
+   target="_blank" rel="noopener"
+   aria-label="Chat with IronCore Fitness on WhatsApp">
+  <span class="wa-badge">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12.04 2A9.9 9.9 0 0 0 3.6 17.04L2.05 22l5.1-1.53A9.9 9.9 0 1 0 12.04 2zm5.72 14.06c-.24.68-1.4 1.3-1.93 1.35-.53.05-1.03.24-3.5-.73-2.98-1.17-4.85-4.24-5-4.44-.14-.2-1.18-1.57-1.18-3s.75-2.13 1.02-2.42c.27-.29.58-.36.78-.36l.56.01c.18 0 .42-.07.66.5.24.58.83 2.02.9 2.17.07.14.12.31.02.5-.1.2-.15.32-.3.5-.14.17-.3.38-.44.51-.14.14-.29.3-.13.58.15.29.68 1.13 1.47 1.83 1.01.9 1.86 1.18 2.13 1.32.27.15.42.12.58-.07.15-.2.66-.79.84-1.06.17-.27.35-.22.58-.14.24.09 1.5.71 1.76.84.27.14.44.2.51.32.07.11.07.65-.17 1.33z"/>
+    </svg>
+  </span>
+  <span class="wa-text">Chat on WhatsApp</span>
+</a>
+
+<script>
+(function () {
+  'use strict';
+
+  var reduced = window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- year ---------- */
+  var y = document.getElementById('year');
+  if (y) y.textContent = String(new Date().getFullYear());
+
+  /* ---------- nav: scroll state ---------- */
+  var nav = document.getElementById('nav');
+  var bar = document.getElementById('progressBar');
+  var ticking = false;
+
+  function onScroll() {
+    var sy = window.pageYOffset || document.documentElement.scrollTop;
+    if (nav) nav.classList.toggle('scrolled', sy > 12);
+    if (bar) {
+      var h = document.documentElement.scrollHeight - window.innerHeight;
+      var p = h > 0 ? Math.min(1, Math.max(0, sy / h)) : 0;
+      bar.style.width = (p * 100).toFixed(2) + '%';
+    }
+    ticking = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { ticking = true; window.requestAnimationFrame(onScroll); }
+  }, { passive: true });
+  onScroll();
+
+  /* ---------- nav: mobile drawer ---------- */
+  var burger = document.getElementById('burger');
+  var drawer = document.getElementById('drawer');
+
+  function closeDrawer() {
+    if (!drawer || !burger) return;
+    drawer.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false');
+    burger.setAttribute('aria-label', 'Open menu');
+  }
+
+  if (burger && drawer) {
+    burger.addEventListener('click', function () {
+      var open = drawer.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    });
+
+    Array.prototype.forEach.call(drawer.querySelectorAll('[data-close]'), function (a) {
+      a.addEventListener('click', closeDrawer);
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeDrawer();
+    });
+  }
+
+  /* ---------- reveal on scroll (small travel, JS-gated) ---------- */
+  var reveals = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+
+  if (!('IntersectionObserver' in window) || reduced) {
+    reveals.forEach(function (el) { el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.12 });
+
+    reveals.forEach(function (el) { io.observe(el); });
+  }
+
+  /* ---------- hero counters (run once, only if motion is welcome) ---------- */
+  var counters = Array.prototype.slice.call(document.querySelectorAll('[data-count]'));
+
+  function fmt(n) {
+    try { return n.toLocaleString('en-IN'); } catch (e) { return String(n); }
+  }
+
+  if (reduced || !counters.length) {
+    counters.forEach(function (el) {
+      el.textContent = fmt(parseInt(el.getAttribute('data-count'), 10)) + (el.getAttribute('data-suffix') || '');
+    });
+  } else if ('IntersectionObserver' in window) {
+    var cio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        cio.unobserve(el);
+        var target = parseInt(el.getAttribute('data-count'), 10) || 0;
+        var suffix = el.getAttribute('data-suffix') || '';
+        var dur = 1150, t0 = null;
+        function step(ts) {
+          if (t0 === null) t0 = ts;
+          var k = Math.min(1, (ts - t0) / dur);
+          var eased = 1 - Math.pow(1 - k, 3);
+          el.textContent = fmt(Math.round(target * eased)) + suffix;
+          if (k < 1) window.requestAnimationFrame(step);
+          else el.textContent = fmt(target) + suffix;
+        }
+        window.requestAnimationFrame(step);
+      });
+    }, { threshold: 0.5 });
+
+    counters.forEach(function (el) { cio.observe(el); });
+  } else {
+    counters.forEach(function (el) {
+      el.textContent = fmt(parseInt(el.getAttribute('data-count'), 10)) + (el.getAttribute('data-suffix') || '');
+    });
+  }
+
+  /* ---------- pricing: monthly / annual ---------- */
+  var sw = document.getElementById('billSwitch');
+  var lblM = document.getElementById('lblMonthly');
+  var lblA = document.getElementById('lblAnnual');
+  var annual = false;
+
+  function money(n) {
+    return '\u20B9' + (n * 1).toLocaleString('en-IN');
+  }
+
+  function renderBilling() {
+    Array.prototype.forEach.call(document.querySelectorAll('.tier-price b'), function (b) {
+      var v = parseInt(annual ? b.getAttribute('data-a') : b.getAttribute('data-m'), 10);
+      b.textContent = money(v);
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('[data-bill]'), function (p) {
+      if (p.classList.contains('saving')) {
+        p.textContent = annual
+          ? 'Billed annually \u00B7 \u20B938,388 a year'
+          : 'Billed monthly \u00B7 save \u20B9800/mo on annual';
+      } else if (p.textContent.indexOf('limited') > -1) {
+        p.textContent = annual
+          ? 'Billed annually \u00B7 limited to 40 members'
+          : 'Billed monthly \u00B7 limited to 40 members';
+      } else {
+        p.textContent = annual
+          ? 'Billed annually \u00B7 cancel with 30 days\u2019 notice'
+          : 'Billed monthly \u00B7 cancel with 15 days\u2019 notice';
+      }
+    });
+    if (lblM) lblM.classList.toggle('on', !annual);
+    if (lblA) lblA.classList.toggle('on', annual);
+  }
+
+  if (sw) {
+    sw.addEventListener('click', function () {
+      annual = !annual;
+      sw.setAttribute('aria-checked', annual ? 'true' : 'false');
+      sw.setAttribute('aria-label', annual ? 'Switch to monthly billing' : 'Switch to annual billing');
+      renderBilling();
+    });
+  }
+
+  /* ---------- contact form -> mailto draft (no backend) ---------- */
+  var form = document.getElementById('trialForm');
+  var status = document.getElementById('formStatus');
+
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      var name = (document.getElementById('f-name').value || '').trim();
+      var phone = (document.getElementById('f-phone').value || '').trim();
+      var goal = document.getElementById('f-goal').value || '';
+      var msg = (document.getElementById('f-msg').value || '').trim();
+
+      if (status) { status.classList.remove('err'); }
+
+      if (!name || !phone) {
+        if (status) {
+          status.classList.add('err');
+          status.textContent = 'Add your name and phone number, then send again.';
+        }
+        if (!name) document.getElementById('f-name').focus();
+        else document.getElementById('f-phone').focus();
+        return;
+      }
+
+      var subject = 'Trial session request \u2014 ' + name;
+      var body =
+        'Name: ' + name + '\n' +
+        'Phone: ' + phone + '\n' +
+        'Goal: ' + goal + '\n' +
+        (msg ? 'Notes: ' + msg + '\n' : '') +
+        '\nSent from the IronCore Fitness website.';
+
+      var url = 'mailto:join@ironcorefitness.in' +
+        '?subject=' + encodeURIComponent(subject) +
+        '&body=' + encodeURIComponent(body);
+
+      if (status) {
+        status.textContent = 'Opening your mail app with the details filled in\u2026';
+      }
+      window.location.href = url;
+    });
+  }
+
+})();
+</script>
+
+</body>
+</html>
