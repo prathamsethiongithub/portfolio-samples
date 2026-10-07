@@ -6,7 +6,7 @@ Web design samples by **Pratham Sethi** — hand-coded, responsive landing pages
 
 | Sample | File | Description |
 |---|---|---|
-| Mira Studio | [concept-sites/mira-studio](https://prathamsethiongithub.github.io/concept-sites/mira-studio/) | Hair & skin studio concept — motion-first editorial build with a GSAP scroll system and a WebGL strand field (fictional sample) |
+| Mira Studio | [concept-sites/mira-studio](https://prathamsethiongithub.github.io/concept-sites/mira-studio/) | Fictional hair, colour and scalp-care studio concept with GSAP motion, Canvas 2D strand animation, a service finder and a no-send booking demo. |
 | IronCore Fitness | `gym.html` | Gym landing page — services, plans, conversion-focused layout |
 | Aarav Mehta Photography | `photographer.html` | Photography portfolio — gallery-first, minimal type |
 | MC Server Ops | `mcserver.html` | Game-server services page — pricing tiers, trust signals |
